@@ -12,7 +12,7 @@ FragTrap::~FragTrap() {
 }
 
 
-FragTrap::FragTrap(std::string Name) : Name(Name) {
+FragTrap::FragTrap(std::string Name) : ClapTrap(Name) {
 	if (Name.empty())
 		Name = "The ghost";
 	Hit_point = 100;

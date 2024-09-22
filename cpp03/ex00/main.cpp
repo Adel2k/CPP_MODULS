@@ -4,14 +4,14 @@
 int	main(void) {
 
 	ClapTrap a;
-	ClapTrap b("Adel");
+	ClapTrap b("Seda");
 	ClapTrap d("Narek");
 
 	ClapTrap c;
 
 	c = d;
 
-	c.attack("Seda");
+	c.attack("Adel");
 	b.takeDamage(7);
 	a.takeDamage(10);
 	b.beRepaired(15);

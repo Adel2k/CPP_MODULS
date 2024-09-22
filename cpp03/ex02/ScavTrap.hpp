@@ -5,6 +5,12 @@
 
 class ScavTrap : public ClapTrap
 {
+	private:
+		std::string	Name;
+		int			Hit_point;
+		int			Energy_point;
+		int			Attack_damage;
+
 	public:
 		ScavTrap();
 		ScavTrap(std::string Name);

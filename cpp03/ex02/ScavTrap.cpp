@@ -25,9 +25,9 @@ ScavTrap& ScavTrap::operator=(ScavTrap& other) {
 	return *this;
 }
 
-ScavTrap::ScavTrap(std::string Name) : ClapTrap(Name) {
+ScavTrap::ScavTrap(std::string Name) : Name(Name) {
 	if (Name.empty())
-		Name = "Ghost";
+		Name = "The ghost";
 	Hit_point = 100;
 	Energy_point = 50;
 	Attack_damage = 20;

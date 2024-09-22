@@ -14,7 +14,7 @@ int	main(void) {
 	c.takeDamage(75);
 	c.beRepaired(155);
 	c.guardGate();
-	b.attack("Bob");
+	b.attack("Narek");
 	b.takeDamage(150);
 	b.beRepaired(15);
 	b.guardGate();

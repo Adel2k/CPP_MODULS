@@ -1,9 +1,9 @@
-PROGRAM_NAME = ScavTrap
+PROGRAM_NAME = FragTrap
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CPP = c++ $(CPPFLAGS)
 
-SOURCES = main.cpp ClapTrap.cpp ScavTrap.cpp
+SOURCES = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJECS = $(SOURCES:.cpp=.o)
 
 all: $(PROGRAM_NAME)

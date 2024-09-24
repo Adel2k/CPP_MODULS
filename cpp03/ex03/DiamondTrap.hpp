@@ -3,7 +3,7 @@
 
 # include "ClapTrap.hpp"
 
-class DiamondTrap
+class DiamondTrap : public FrafTrap , public ScavTrap
 {
 	private:
 		/* data */

@@ -2,6 +2,7 @@
 
 FragTrap::FragTrap() {
 	std::cout << "\033[1;32mFragTrap default constructor called.\033[0m" << std::endl;
+	Name = ClapTrap(Name);
 	Hit_point = 100;
 	Energy_point = 100;
 	Attack_damage = 30;

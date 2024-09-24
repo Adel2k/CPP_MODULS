@@ -1,6 +1,6 @@
 PROGRAM_NAME = DiamondTrap
 
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -Wshadow -Wno-shadow -Wall -Wextra -Werror -std=c++98
 CPP = c++ $(CPPFLAGS)
 
 SOURCES = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp

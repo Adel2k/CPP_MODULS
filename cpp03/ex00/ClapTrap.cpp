@@ -7,6 +7,15 @@ ClapTrap::ClapTrap() : Name("The ghost") {
 	Attack_damage = 0;
 }
 
+ClapTrap::ClapTrap(std::string Name) : Name(Name) {
+	if (Name.empty())
+		Name = "The ghost";
+	Hit_point = 10;
+	Energy_point = 10;
+	Attack_damage = 0;
+	std::cout << "\033[32mConstructor with parametrs called for " << Name << ".\033[0m" << std::endl;
+}
+
 ClapTrap::ClapTrap(ClapTrap& other) {
 	std::cout << "\033[34mCopy constructor called.\033[0m" << std::endl;
 	if (this == &other)
@@ -23,15 +32,6 @@ ClapTrap& ClapTrap::operator=(ClapTrap& other) {
 	this->Energy_point = other.Energy_point;
 	this->Attack_damage = other.Attack_damage;
 	return *this;
-}
-
-ClapTrap::ClapTrap(std::string Name) : Name(Name) {
-	if (Name.empty())
-		Name = "The ghost";
-	Hit_point = 10;
-	Energy_point = 10;
-	Attack_damage = 0;
-	std::cout << "\033[34mConstructor with parametrs called for " << Name << ".\033[0m" << std::endl;
 }
 
 ClapTrap::~ClapTrap() {
@@ -63,4 +63,23 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 		Hit_point -= amount;
 		std::cout << "ClapTrap " << Name << " " << amount <<" points of damage!" << std::endl;
 	}
+}
+
+
+int	ClapTrap::getEnergy_point() const {
+	return (Energy_point);
+}
+
+
+int	ClapTrap::getHit_point() const {
+	return (Hit_point);
+}
+
+
+int	ClapTrap::getAttack_damage() const {
+	return (Attack_damage);
+}
+
+std::string ClapTrap::getName() const {
+	return (Name);
 }

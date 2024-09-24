@@ -1,14 +1,23 @@
-#include "FragTrap.hpp"
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+
+#include "DiamondTrap.hpp"
 
 int	main(void) {
+	std::cout << "\n\n### TESTING DIAMONDTRAP ###\n" << std::endl;
+	{
 
-	FragTrap a("Bob");
+		
+		std::cout << "\033[34mConstructing\033[0m" << std::endl;
+		DiamondTrap a;
+		DiamondTrap b("Gaspar");
+		DiamondTrap c(a);
 
-	a.attack("Josh");
-	a.takeDamage(150);
-	a.beRepaired(15);
-	a.highFivesGuys();
+		std::cout << "\033[34mTesting\033[0m" << std::endl;
+		a.whoAmI();
+		a.attack("Seda");
+		b.whoAmI();
+		b.attack("Narek");
+		c.whoAmI();
+		std::cout << "\033[34mDeconstructing\033[0m" << std::endl;
+	}
 	return (0);
 }

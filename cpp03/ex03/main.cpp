@@ -28,23 +28,23 @@ void	print_repairing(ClapTrap& obj) {
 }
 
 int	main(void) {
-	std::cout << "\n\n### TESTING DIAMONDTRAP ###\n" << std::endl;
-	{
+	
+	std::cout << "\033[1;35mm############################# Constructing #############################\033[0m" << endl << std::endl;
+	DiamondTrap a;
+	print_infos(a);
+	DiamondTrap b("Gaspar");
+	print_infos(b);
+	DiamondTrap c(a);
+	print_infos(c);
 
-		
-		std::cout << "\033[34mConstructing\033[0m" << std::endl;
-		DiamondTrap a;
-		cout << a.getAttack_damage() << endl;
-		DiamondTrap b("Gaspar");
-		DiamondTrap c(a);
-
-		std::cout << "\033[34mTesting\033[0m" << std::endl;
-		a.whoAmI();
-		a.attack("Seda");
-		b.whoAmI();
-		b.attack("Narek");
-		c.whoAmI();
-		std::cout << "\033[34mDeconstructing\033[0m" << std::endl;
-	}
+	std::cout << endl << "\033[1;34m############################# Testing #############################\033[0m" << endl << std::endl;
+	a.whoAmI();
+	a.attack("Seda");
+	print_attacking(a);
+	b.whoAmI();
+	b.attack("Narek");
+	print_attacking(a);
+	c.whoAmI();
+	std::cout << endl << "\033[1;31m############################# Deconstructing #############################\033[0m" << endl << std::endl;
 	return (0);
 }

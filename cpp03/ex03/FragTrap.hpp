@@ -4,8 +4,8 @@
 # include "ClapTrap.hpp"
 
 class FragTrap : virtual public ClapTrap {
-	private:
-		std::string	Name;
+	// private:
+	// 	std::string	Name;
 
 	public:
 		FragTrap();
@@ -15,6 +15,7 @@ class FragTrap : virtual public ClapTrap {
 
 		FragTrap&	operator=(FragTrap& other);
 		void		highFivesGuys();
+	
 };
 
 

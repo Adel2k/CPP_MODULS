@@ -44,3 +44,4 @@ FragTrap::FragTrap(std::string Name) : ClapTrap(Name) {
 void	FragTrap::highFivesGuys() {
 	std::cout << "\033[1;33mFragTrap wants a highfive.\033[0m" << std::endl << std::endl;
 }
+

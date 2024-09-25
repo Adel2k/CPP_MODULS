@@ -27,7 +27,7 @@ ClapTrap& ClapTrap::operator=(ClapTrap& other) {
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "\033[31mDestructor called\033[0m" << std::endl;
+	std::cout << "\033[31mClapTrap destructor called\033[0m" << std::endl;
 }
 //
 

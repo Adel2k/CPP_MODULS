@@ -1,29 +1,50 @@
 #include "DiamondTrap.hpp"
 
+//Orthodox
 DiamondTrap::DiamondTrap() {
-	std::cout << "DiamondTrap defualt constructor called for " << Name << "." << std::endl;
+	std::cout << "\033[1;32mDiamondTrap default constructor called.\033[0m" << std::endl;
+	this->Hit_point = 100;
+	this->Energy_point = 50;
+	this->Attack_damage = 20;
+	this->Name = ClapTrap::Name;
+
+}
+DiamondTrap::DiamondTrap(DiamondTrap& other) {
+	std::cout << "\033[1;34mDiamondTrap copy constructor called.\033[0m" << std::endl;
+	if (this == &other)
+		return ;
+	*this = other;
+}
+
+DiamondTrap& DiamondTrap::operator=(DiamondTrap& other) {
+	std::cout << "\033[1;34mDiamondTrap copy assignment constructor called.\033[0m" << std::endl;
+	if (this == &other)
+		return *this;
+	this->Name = other.Name;
+	this->Hit_point = other.Hit_point;
+	this->Attack_damage = other.Attack_damage;
+	this->Energy_point = other.Energy_point;
+	return *this;
+}
+
+DiamondTrap::~DiamondTrap() {
+	std::cout << "\033[1;31mDiamondTrap destructor called\033[0m" << std::endl;
+}
+//
+
+DiamondTrap::DiamondTrap(int no_use) {
+	(void)no_use;
 	this->Hit_point = FragTrap::Hit_point;
 	this->Energy_point = ScavTrap::Energy_point;
 	this->Attack_damage = FragTrap::Attack_damage;
 	this->Name = ClapTrap::Name;
-
 }
-
 DiamondTrap::DiamondTrap(std::string Name) : Name(Name) {
 	this->Name = Name;
 	ClapTrap::Name = Name + "_clap_name";
-	std::cout << "DiamondTrap constructor with parametrs called for DT = " << Name << ", CT = " << ClapTrap::Name << "." << std::endl;
+	std::cout << "\033[1;34mFragTrap constructor with parametrs called for " << Name << ".\033[0m" << std::endl;
 }
-
-// DiamondTrap::DiamondTrap(DiamondTrap& other) {
-
-// }
-
-DiamondTrap::~DiamondTrap() {
-	std::cout << "DiamondTrap Destructor called." << std::endl;
-}
-
 void	DiamondTrap::whoAmI() {
-	std::cout << "CT : " << ClapTrap::Name << std::endl;
-	std::cout << "DT : " << Name << std::endl;
+	std::cout << "\033[33mCT : " << ClapTrap::Name << std::endl;
+	std::cout << "DT : " << Name << "\033[0m" << std::endl;
 }

@@ -64,3 +64,22 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 		std::cout << "ClapTrap " << Name << " " << amount <<" points of damage!" << std::endl;
 	}
 }
+
+
+int	ClapTrap::getEnergy_point() const {
+	return (Energy_point);
+}
+
+
+int	ClapTrap::getHit_point() const {
+	return (Hit_point);
+}
+
+
+int	ClapTrap::getAttack_damage() const {
+	return (Attack_damage);
+}
+
+std::string ClapTrap::getName() const {
+	return (Name);
+}

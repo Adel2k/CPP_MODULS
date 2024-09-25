@@ -1,19 +1,11 @@
 #include "ClapTrap.hpp"
 
+//Orthodox
 ClapTrap::ClapTrap() : Name("The ghost") {
 	std::cout << "\033[32mDefault constructor called.\033[0m" << std::endl;
 	Hit_point = 10;
 	Energy_point = 10;
 	Attack_damage = 0;
-}
-
-ClapTrap::ClapTrap(std::string Name) : Name(Name) {
-	if (Name.empty())
-		Name = "The ghost";
-	Hit_point = 10;
-	Energy_point = 10;
-	Attack_damage = 0;
-	std::cout << "\033[32mConstructor with parametrs called for " << Name << ".\033[0m" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap& other) {
@@ -37,6 +29,7 @@ ClapTrap& ClapTrap::operator=(ClapTrap& other) {
 ClapTrap::~ClapTrap() {
 	std::cout << "\033[31mDestructor called\033[0m" << std::endl;
 }
+//
 
 void	ClapTrap::attack(const std::string& target) {
 	if (Hit_point > 0 && Energy_point > 0) {
@@ -45,6 +38,15 @@ void	ClapTrap::attack(const std::string& target) {
 	}
 	else
 		std::cout << Name << " does not have enough hit point for attack!" << std::endl;
+}
+
+ClapTrap::ClapTrap(std::string Name) : Name(Name) {
+	if (Name.empty())
+		Name = "The ghost";
+	Hit_point = 10;
+	Energy_point = 10;
+	Attack_damage = 0;
+	std::cout << "\033[32mConstructor with parametrs called for " << Name << ".\033[0m" << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {

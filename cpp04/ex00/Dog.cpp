@@ -31,3 +31,7 @@ Dog::~Dog() {
 void	Dog::makeSound() {
 	cout << "Haf" << endl;
 }
+
+// std::string	Dog::getType() const{
+// 	return (type);
+// }

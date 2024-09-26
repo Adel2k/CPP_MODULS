@@ -12,6 +12,8 @@ class Cat : public Animal
 
 		Cat&	operator=(Cat& other);
 		void	makeSound();
+
+		// std::string	getType() const;
 };
 
 

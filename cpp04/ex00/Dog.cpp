@@ -9,12 +9,12 @@ Dog::Dog() {
 	type = "Dog";
 }
 
-Dog::Dog(Dog& other) {
-	std::cout << "\033[1;34mDog copy constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return ;
-	*this = other;
-}
+// Dog::Dog(Dog& other) {
+// 	std::cout << "\033[1;34mDog copy constructor called.\033[0m" << std::endl;
+// 	if (this == &other)
+// 		return ;
+// 	*this = other;
+// }
 
 Dog& Dog::operator=(Dog& other) {
 	std::cout << "\033[1;34mDog copy assignment constructor called.\033[0m" << std::endl;

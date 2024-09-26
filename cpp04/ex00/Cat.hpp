@@ -7,7 +7,7 @@ class Cat : public Animal
 {
 	public:
 		Cat();
-		Cat(Cat& other);
+		// Cat(Cat& other);
 		~Cat();
 
 		Cat&	operator=(Cat& other);

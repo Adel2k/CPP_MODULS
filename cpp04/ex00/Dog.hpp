@@ -7,13 +7,12 @@ class Dog : public Animal
 {
 	public:
 		Dog();
-		// Dog(Dog& other);
+		Dog(Dog& other);
 		~Dog();
 
 		Dog&	operator=(Dog& other);
 		void	makeSound();
 
-		// std::string	getType() const;
 };
 
 

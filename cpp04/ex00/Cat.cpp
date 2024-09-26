@@ -9,12 +9,12 @@ Cat::Cat(){
 	type = "Cat";
 }
 
-// Cat::Cat(Cat& other) {
-// 	cout << "\033[1;34mCat copy constructor called.\033[0m" << endl;
-// 	if (this == &other)
-// 		return ;
-// 	*this = other;
-// }
+Cat::Cat(Cat& other) : Animal(other) {
+	cout << "\033[1;34mCat copy constructor called.\033[0m" << endl;
+	if (this == &other)
+		return ;
+	*this = other;
+}
 
 Cat& Cat::operator=(Cat& other) {
 	cout << "\033[1;34mCat copy assignment constructor called.\033[0m" << endl;
@@ -32,7 +32,3 @@ Cat::~Cat() {
 void	Cat::makeSound() {
 	cout << "Meow" << endl;
 }
-
-// std::string	Cat::getType() const{
-// 	return (type);
-// }

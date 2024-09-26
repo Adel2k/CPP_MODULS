@@ -1,9 +1,9 @@
-PROGRAM_NAME = phonebook
+PROGRAM_NAME = Animal
 
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CPP = c++ $(CPPFLAGS)
 
-SOURCES = main.cpp PhoneBook.cpp Contact.cpp
+SOURCES = main.cpp Animal.cpp Cat.cpp Dog.cpp
 OBJECS = $(SOURCES:.cpp=.o)
 
 all: $(PROGRAM_NAME)

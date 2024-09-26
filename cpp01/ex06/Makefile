@@ -1,6 +1,6 @@
 PROGRAM_NAME = Harl
 
-CPPFLAGS = -Wall -Wextra -Werror -std=c++11 #-fsanitize=address
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 CPP = c++ $(CPPFLAGS)
 
 SOURCES = main.cpp Harl.cpp

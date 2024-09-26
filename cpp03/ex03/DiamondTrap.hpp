@@ -20,7 +20,7 @@ class DiamondTrap : public ScavTrap, public FragTrap
 		DiamondTrap& operator=(DiamondTrap& other);
 		void	whoAmI();
 
-		// using	ScavTrap::attack;
+		using	ScavTrap::attack;
 };
 
 

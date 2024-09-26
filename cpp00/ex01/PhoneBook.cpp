@@ -33,7 +33,7 @@ void	PhoneBook::print_all_contacts()
 		len = MAX_NUM;
 	for (int i = 0; i < len; i++)
 	{
-		// printf("%d>>>>>>>>>>>>>\n", len);
+		// print("%d>>>>>>>>>>>>>\n", len);
 		std::cout << std::setw(10) << i ;
 		if (contacts[i].get_first_name().length() > 10)
 			std::cout << "|" << std::setw(10) << contacts[i].get_first_name().substr(0 , 9) + "." ;

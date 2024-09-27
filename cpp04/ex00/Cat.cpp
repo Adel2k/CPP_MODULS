@@ -24,7 +24,7 @@ Cat& Cat::operator=(Cat& other) {
 }
 
 Cat::~Cat() {
-	cout << "\033[1;31mCat default destructor called.\033[0m" << endl;
+	cout << "\033[1;31mCat destructor called.\033[0m" << endl;
 }
 
 //

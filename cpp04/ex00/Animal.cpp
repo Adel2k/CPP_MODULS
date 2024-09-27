@@ -24,7 +24,7 @@ Animal& Animal::operator=(Animal& other) {
 }
 
 Animal::~Animal() {
-	cout << "\033[1;31mAnimal default destructor called.\033[0m" << endl;
+	cout << "\033[1;31mAnimal destructor called.\033[0m" << endl;
 }
 
 //

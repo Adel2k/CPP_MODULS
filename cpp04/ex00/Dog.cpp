@@ -24,7 +24,7 @@ Dog& Dog::operator=(Dog& other) {
 }
 
 Dog::~Dog() {
-	cout << "\033[1;31mDog default destructor called.\033[0m" << endl;
+	cout << "\033[1;31mDog destructor called.\033[0m" << endl;
 }
 //
 

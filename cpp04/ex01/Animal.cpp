@@ -24,13 +24,13 @@ Animal& Animal::operator=(Animal& other) {
 }
 
 Animal::~Animal() {
-	cout << "\033[1;31mAnimal default destructor called.\033[0m" << endl;
+	cout << "\033[1;31mAnimal destructor called.\033[0m" << endl;
 }
 
 //
 
 void	Animal::makeSound() {
-	cout << "No sound" << endl;
+	cout << "\033[1;35mNo Sound\033[0m" << endl;
 }
 
 std::string Animal::getType() const {

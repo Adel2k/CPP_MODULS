@@ -25,12 +25,11 @@ Dog& Dog::operator=(Dog& other) {
 }
 
 Dog::~Dog() {
-	cout << "\033[1;31mDog default destructor called.\033[0m" << endl;
-	if (B)
+	cout << "\033[1;31mDog destructor called.\033[0m" << endl;
 		delete B;
 }
 //
 
 void	Dog::makeSound() {
-	cout << "Haf" << endl;
+	cout << "\033[1;31mHaf\033[0m" << endl;
 }

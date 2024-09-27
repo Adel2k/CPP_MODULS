@@ -23,7 +23,7 @@ Brain& Brain::operator=(Brain& other) {
 }
 
 Brain::~Brain() {
-	cout << "\033[1;31mBrain default destructor called.\033[0m" << endl;
+	cout << "\033[1;31mBrain destructor called.\033[0m" << endl;
 }
 
 //

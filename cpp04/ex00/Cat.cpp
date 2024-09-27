@@ -30,5 +30,5 @@ Cat::~Cat() {
 //
 
 void	Cat::makeSound() {
-	cout << "Meow" << endl;
+	cout << "\033[1;35mMeow\033[0m" << endl;
 }

@@ -30,7 +30,8 @@ Animal::~Animal() {
 //
 
 void	Animal::makeSound() {
-	cout << "No sound" << endl;
+	cout << "\033[1;35mNo Sound\033[0m" << endl;
+
 }
 
 std::string Animal::getType() const {

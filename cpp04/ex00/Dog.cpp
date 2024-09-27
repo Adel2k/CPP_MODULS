@@ -29,5 +29,5 @@ Dog::~Dog() {
 //
 
 void	Dog::makeSound() {
-	cout << "Haf" << endl;
+	cout << "\033[1;35mHaf\033[0m" << endl;
 }

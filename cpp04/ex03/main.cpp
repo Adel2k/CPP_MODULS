@@ -1,6 +1,7 @@
 # include "AMateria.hpp"
 # include "Ice.hpp"
 # include "Cure.hpp"
+# include "ICharacter.hpp"
 
 using std::cout;
 using std::endl;
@@ -9,9 +10,11 @@ int main()
 {
 	AMateria* b;
 	AMateria* a = new Ice;
+	ICharacter *t = Character(b) ;
 	b = a->clone();
 	cout << a->getType() << endl;
 	cout << b->getType() << endl;
+	a->use(&t);
 
 	delete a;
 	delete b;

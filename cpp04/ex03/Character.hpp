@@ -2,12 +2,18 @@
 # define CHARACTER_HPP
 
 # include <iostream>
+
 # include "ICharacter.hpp"
+
+// # include "AMateria.hpp"
 
 class Character : public ICharacter
 {
 	private:
-		std::string Name;
+		std::string	Name;
+		int			quantity;
+		// AMateria	slots[4];
+
 
 	public:
 		Character();
@@ -16,6 +22,7 @@ class Character : public ICharacter
 		~Character();
 
 		Character& operator=(Character& other);
+		const std::string& getName() const;
 };
 
 #endif

@@ -33,7 +33,7 @@ AMateria::AMateria(std::string const& type) {
 }
 
 void	AMateria::use(ICharacter& target) {
-	cout << "\033[1;35mAMateria use called.\033[0m" << endl;
+	cout << "\033[1;35mAMateria use called for " << target.getName() <<".\033[0m" << endl;
 }
 
 std::string const & AMateria::getType() const {

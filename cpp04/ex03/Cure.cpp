@@ -1,4 +1,5 @@
 # include "Cure.hpp"
+# include "ICharacter.hpp"
 
 using std::cout;
 using std::endl;
@@ -34,5 +35,5 @@ AMateria* Cure::clone() const {
 }
 
 void	Cure::use(ICharacter& target) {
-	cout << "* shoots an ice bolt at " << target.getName() << "*" << endl;
+	cout << "* shoots an ice bolt at " << target.getName() << " *" << endl;
 }

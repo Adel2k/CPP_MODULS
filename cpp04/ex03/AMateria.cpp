@@ -1,4 +1,5 @@
 # include "AMateria.hpp"
+# include "ICharacter.hpp"
 
 using std::cout;
 using std::endl;

@@ -31,5 +31,5 @@ Dog::~Dog() {
 //
 
 void	Dog::makeSound() {
-	cout << "\033[1;31mHaf\033[0m" << endl;
+	cout << "\033[1;34mHaf 🐶\033[0m" << endl;
 }

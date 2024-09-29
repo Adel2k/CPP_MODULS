@@ -15,10 +15,11 @@ int main()
 		j = new Dog();
 	for (int i = 0; i < 5; i++)
 		k = new Cat();
-	for (int i = 0; i < 5; i++)
-		delete j;//should not create a leak
-	for (int i = 0; i < 5; i++)
-		delete k;
+	// for (int i = 0; i < 5; i++)
+		delete[] j;//should not create a leak
+	// for (int i = 0; i < 5; i++)
+		delete[] k;
+		system("leaks Animal");
 	
 	return 0;
 }

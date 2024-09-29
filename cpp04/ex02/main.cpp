@@ -11,7 +11,7 @@ int main() {
 	cout  << endl << "\033[32m########### CONSTRUCTORS ###########\033[0m" << endl << endl;
 	Animal *a = new Cat;
 	Cat b;
-	Animal* meta = new Animal();
+	// Animal* meta = new Animal(); //should be a compile error with this
 	Animal* j = new Dog();
 	Animal* i = new Cat();
 
@@ -20,10 +20,10 @@ int main() {
 	std::cout << i->getType() << " " << std::endl;
 	i->makeSound(); //will output the cat sound!
 	j->makeSound();
-	meta->makeSound();
+	// meta->makeSound();
 	cout  << endl << "\033[31m########### DESTRUCTORS ###########\033[0m" << endl << endl;
 	delete a;
-	delete meta;
+	// delete meta;
 	delete j;
 	delete i;
 

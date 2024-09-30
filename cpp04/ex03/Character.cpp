@@ -7,7 +7,7 @@ using std::endl;
 Character::Character() : Name("No name"), quantity(0) {
 	cout << "\033[1;32mCharacter default constructor called.\033[0m" << endl;
 	for (int i = 0; i < 4; i++) {
-		iventory[i] = NULL;
+		inventory[i] = NULL;
 	}
 }
 
@@ -33,7 +33,7 @@ Character::~Character() {
 Character::Character(std::string Name) : quantity(0) {
 	cout << "\033[1;32mCharacter constructor with parametrs called.\033[0m" << endl;
 	for (int i = 0; i < 4; i++) {
-		iventory[i] = NULL;
+		inventory[i] = NULL;
 	}
 	this->Name = Name;
 }
@@ -44,8 +44,8 @@ const std::string& Character::getName() const{
 
 void	Character::equip(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
-		if (iventory[i] == NULL) {
-			iventory[i] = m;
+		if (inventory[i] == NULL) {
+			inventory[i] = m;
 			cout << "done" << endl;
 			return ;
 		}
@@ -53,15 +53,15 @@ void	Character::equip(AMateria* m) {
 }
 
 void	Character::unequip(int idx) {
-	if (iventory[idx])
-		iventory[idx] = NULL;
+	if (inventory[idx])
+		inventory[idx] = NULL;
 	else
 		cout << "It doesnt exist" << endl;
 }
 
 void Character::use(int idx, ICharacter& target) {
-	if (iventory[idx]) {
-		iventory[idx]->use(target);
+	if (inventory[idx] != NULL) {
+		inventory[idx]->use(target);
 		cout << "Slot " << idx << "is using " << target.getName() << endl;
 	}
 	else

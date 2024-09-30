@@ -3,6 +3,9 @@
 # include "Cure.hpp"
 # include "ICharacter.hpp"
 # include "Character.hpp"
+# include "IMateriaSource.hpp"
+# include "MateriaSource.hpp"
+
 
 
 
@@ -11,36 +14,36 @@ using std::endl;
 
 int main()
 {
-	AMateria* b;
-	AMateria* a = new Ice;
-	ICharacter *t = new Character("b") ;
-	b = a->clone();
-	cout << a->getType() << endl;
-	cout << b->getType() << endl;
-	t->equip(a);
-	t->equip(a);
-	t->equip(a);
-	t->equip(a);
-	t->equip(a);
+	// AMateria* b;
+	// AMateria* a = new Ice;
+	// ICharacter *t = new Character("b") ;
+	// b = a->clone();
+	// cout << a->getType() << endl;
+	// cout << b->getType() << endl;
+	// t->equip(a);
+	// t->equip(a);
+	// t->equip(a);
+	// t->equip(a);
+	// t->equip(a);
 
-	a->use(*t);
+	// a->use(*t);
 
-	delete a;
-	delete b;
-	// IMateriaSource* src = new MateriaSource();
-	// src->learnMateria(new Ice());
-	// src->learnMateria(new Cure());
+	// delete a;
+	// delete b;
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
 	ICharacter* me = new Character("me");
-	// AMateria* tmp;
-	// tmp = src->createMateria("ice");
-	// me->equip(tmp);
-	// tmp = src->createMateria("cure");
-	// me->equip(tmp);
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
 	delete bob;
 	delete me;
-	// delete src;
+	delete src;
 	return 0;
 }

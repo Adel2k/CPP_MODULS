@@ -3,8 +3,8 @@ PROGRAM_NAME = Animal
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic #-g3 -fsanitize=address
 CPP = c++ $(CPPFLAGS)
 
-SOURCES = main.cpp Ice.cpp Cure.cpp AMateria.cpp Character.cpp
-HEADERS = Ice.hpp Cure.hpp AMateria.hpp ICharacter.hpp Character.hpp
+SOURCES = main.cpp Ice.cpp Cure.cpp AMateria.cpp Character.cpp MateriaSource.cpp
+HEADERS = Ice.hpp Cure.hpp AMateria.hpp ICharacter.hpp Character.hpp MateriaSource.hpp IMateriaSource.hpp
 OBJECS = $(SOURCES:.cpp=.o)
 
 all: $(PROGRAM_NAME)

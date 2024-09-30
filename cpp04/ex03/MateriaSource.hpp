@@ -4,13 +4,19 @@
 # include <iostream>
 # include "IMateriaSource.hpp"
 
-class MateriaSource
+class MateriaSource : public IMateriaSource
 {
 	private:
-		/* data */
+		AMateria*	inventory[4];
+
 	public:
-		MateriaSource(/* args */);
+		MateriaSource();
+		MateriaSource(MateriaSource& other);
+		MateriaSource& operator=(MateriaSource& other);
 		~MateriaSource();
+
+		void		learnMateria(AMateria*);
+		AMateria*	createMateria(std::string const & type);
 };
 
 #endif

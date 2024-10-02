@@ -63,7 +63,7 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 void	ClapTrap::takeDamage(unsigned int amount) {
 	if (Hit_point > 0 && Energy_point > 0) {
 		Hit_point -= amount;
-		std::cout << "ClapTrap " << Name << " " << amount <<" points of damage!" << std::endl;
+		std::cout << "ClapTrap " << Name << " " << 	 <<" points of damage!" << std::endl;
 	}
 }
 

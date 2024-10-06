@@ -1,9 +1,9 @@
 PROGRAM_NAME = Account
 
-CPPFLAGS = -Wall -Wextra -Werror #-std=c++98
-CPP = g++ $(CPPFLAGS)
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CPP = c++ $(CPPFLAGS)
 
-SOURCES = main.cpp Account.cpp tests.cpp
+SOURCES = Account.cpp tests.cpp
 OBJECS = $(SOURCES:.cpp=.o)
 
 all: $(PROGRAM_NAME)

@@ -5,14 +5,12 @@
 
 # include "ICharacter.hpp"
 
-// # include "AMateria.hpp"
-
 class Character : public ICharacter
 {
 	private:
 		std::string	Name;
 		int			quantity;
-		// AMateria	slots[4];
+		AMateria*	inventory[4];
 
 
 	public:
@@ -21,8 +19,11 @@ class Character : public ICharacter
 		Character(Character& other);
 		~Character();
 
-		Character& operator=(Character& other);
-		const std::string& getName() const;
+		Character&			operator=(Character& other);
+		const std::string&	getName() const;
+		void				equip(AMateria* m);
+		void				unequip(int idx);
+		void				use(int idx, ICharacter& target);
 };
 
 #endif

@@ -48,6 +48,8 @@ int	main(void) {
 	print_attacking(c);
 	b.takeDamage(7);
 	print_damage(b);
+	b.takeDamage(2148473649);
+	print_damage(b);
 	a.takeDamage(10);
 	print_damage(a);
 	b.beRepaired(15);
@@ -55,6 +57,8 @@ int	main(void) {
 	a.beRepaired(15);
 	print_repairing(a);
 	c.takeDamage(25);
+	print_damage(c);
+	c.takeDamage(500);
 	print_damage(c);
 	c.beRepaired(7);
 	print_repairing(c);

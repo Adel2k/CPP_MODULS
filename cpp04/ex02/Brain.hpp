@@ -2,6 +2,7 @@
 # define BRAIN_HPP
 
 # include <iostream>
+
 class Brain
 {
 	private:

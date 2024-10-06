@@ -1,4 +1,6 @@
 # include "Ice.hpp"
+# include "ICharacter.hpp"
+
 
 using std::cout;
 using std::endl;
@@ -34,5 +36,5 @@ AMateria* Ice::clone() const {
 }
 
 void	Ice::use(ICharacter& target) {
-	cout << "* shoots an ice bolt at " << target.getName() << "*" << endl;
+	cout << "* shoots an ice bolt at " << target.getName() << " *" << endl;
 }

@@ -32,14 +32,7 @@ DiamondTrap::~DiamondTrap() {
 }
 //
 
-DiamondTrap::DiamondTrap(int no_use) {
-	(void)no_use;
-	this->Hit_point = FragTrap::Hit_point;
-	this->Energy_point = ScavTrap::Energy_point;
-	this->Attack_damage = FragTrap::Attack_damage;
-	this->Name = ClapTrap::Name;
-}
-DiamondTrap::DiamondTrap(std::string Name) : Name(Name) {
+DiamondTrap::DiamondTrap(std::string Name) {
 	this->Name = Name;
 	ClapTrap::Name = Name + "_clap_name";
 	std::cout << "\033[1;34mFragTrap constructor with parametrs called for " << Name << ".\033[0m" << std::endl;

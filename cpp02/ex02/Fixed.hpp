@@ -15,25 +15,24 @@ class Fixed
 		Fixed(const int point);
 		Fixed(const float point);
 		Fixed(const Fixed& other);
-		Fixed& operator=(const Fixed& other);
 		~Fixed();
 
-		float	toFloat( void ) const;
-		int		toInt( void ) const;
+		float		toFloat( void ) const;
+		int			toInt( void ) const;
 
 		//Getter
-		int		getRawBits() const;
+		int			getRawBits() const;
 
 		//Setter
-		void	setRawBits(int const raw);
+		void		setRawBits(int const raw);
 
 		//Overloading
-		bool	operator<(const Fixed& rs) const;
-		bool	operator>(const Fixed& rs) const;
-		bool	operator>=(const Fixed& rs) const;
-		bool	operator<=(const Fixed& rs) const;
-		bool	operator==(const Fixed& rs) const;
-		bool	operator!=(const Fixed& rs) const;
+		bool		operator<(const Fixed& rs) const;
+		bool		operator>(const Fixed& rs) const;
+		bool		operator>=(const Fixed& rs) const;
+		bool		operator<=(const Fixed& rs) const;
+		bool		operator==(const Fixed& rs) const;
+		bool		operator!=(const Fixed& rs) const;
 
 		const Fixed	operator+(const Fixed& rs);
 		const Fixed	operator-(const Fixed& rs);
@@ -42,8 +41,9 @@ class Fixed
 
 		const Fixed	operator++(int);
 		const Fixed	operator--(int);
-		Fixed&	operator++();
-		Fixed&	operator--();
+		Fixed&		operator++();
+		Fixed&		operator--();
+		Fixed&		operator=(const Fixed& other);
 
 		static Fixed&	min(Fixed& f1, Fixed& f2);
 		static Fixed&	max(Fixed& f1, Fixed& f2);
@@ -52,12 +52,6 @@ class Fixed
 
 };
 
-std::ostream&	operator<<(std::ostream& out, const Fixed& fixed);
-
-
-
-
-
-
+std::ostream&		operator<<(std::ostream& out, const Fixed& fixed);
 
 #endif

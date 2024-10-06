@@ -33,7 +33,6 @@ void	PhoneBook::print_all_contacts()
 		len = MAX_NUM;
 	for (int i = 0; i < len; i++)
 	{
-		// print("%d>>>>>>>>>>>>>\n", len);
 		std::cout << std::setw(10) << i ;
 		if (contacts[i].get_first_name().length() > 10)
 			std::cout << "|" << std::setw(10) << contacts[i].get_first_name().substr(0 , 9) + "." ;
@@ -57,26 +56,25 @@ void	PhoneBook::search()
 	
 	while (getline(std::cin, input))
 	{
-		try {
-			index = std::stoi(input);
-			if (index > size || index > MAX_NUM){
+		if (input[0] >= '0' && input[0] <= '7') {
+			index = input[0] - '0';
+			if (index < size) {
+				std::cout << "First name: " << contacts[index].get_first_name() << std::endl;
+				std::cout << "Last name: " << contacts[index].get_last_name() << std::endl;
+				std::cout << "Nickname: " << contacts[index].get_nickname() << std::endl;
+				std::cout << "Phone number: " << contacts[index].get_phone_number() << std::endl;
+				std::cout << "Darkest secret: " << contacts[index].get_darkest_secret() << std::endl;
+				return ;
+			}
+			else {
 				std::cerr << "Invalid index, try 0 - 7" << std::endl;
-				continue;
+				continue ;
 			}
 		}
-		catch (const std::invalid_argument& e) {
-			std::cerr << "Invalid input. Please enter a number." << std::endl;
-			continue;
+		else {
+			std::cerr << "Invalid index, try 0 - 7" << std::endl;
+			continue ;
 		}
-		catch (const std::out_of_range& e){
-			std::cerr << "Invalid input. Out of range" << std::endl;
-			continue;
-		}
-		std::cout << "First name: " << contacts[index].get_first_name() << std::endl;
-		std::cout << "Last name: " << contacts[index].get_last_name() << std::endl;
-		std::cout << "Nickname: " << contacts[index].get_nickname() << std::endl;
-		std::cout << "Phone number: " << contacts[index].get_phone_number() << std::endl;
-		std::cout << "Darkest secret: " << contacts[index].get_darkest_secret() << std::endl;
-		return;
-	} 
+	}
+	return;
 }

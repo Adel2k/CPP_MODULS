@@ -1,6 +1,6 @@
 PROGRAM_NAME = sed
 
-CPPFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 CPP = c++ $(CPPFLAGS)
 
 SOURCES = main.cpp

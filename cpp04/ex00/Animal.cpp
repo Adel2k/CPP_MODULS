@@ -4,7 +4,7 @@ using std::cout;
 using std::endl;
 
 //Orthodox
-Animal::Animal() {
+Animal::Animal() : type("Animal") {
 	cout << "\033[1;32mAnimal default constructor called.\033[0m" << endl;
 }
 

@@ -29,7 +29,7 @@ void	print_repairing(ClapTrap& obj) {
 
 int	main(void) {
 	
-	std::cout << "\033[1;35mm############################# Constructing #############################\033[0m" << endl << std::endl;
+	std::cout << "\033[1;35m############################# Constructing #############################\033[0m" << endl << std::endl;
 	DiamondTrap a;
 	print_infos(a);
 	DiamondTrap b("Gaspar");

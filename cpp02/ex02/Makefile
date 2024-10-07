@@ -1,6 +1,6 @@
 PROGRAM_NAME = fixed
 
-CPPFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CPPFLAGS = -Wall -Wextra -Werror -fsanitize=address -std=c++98
 CPP = c++ $(CPPFLAGS)
 
 SOURCES = main.cpp Fixed.cpp

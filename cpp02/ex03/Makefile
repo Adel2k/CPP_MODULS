@@ -1,6 +1,6 @@
 PROGRAM_NAME = bsp
 
-CPPFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CPPFLAGS = -Wall -Wextra -Werror -fsanitize=address -std=c++98
 CPP = c++ $(CPPFLAGS)
 
 SOURCES = main.cpp Fixed.cpp Point.cpp bsp.cpp

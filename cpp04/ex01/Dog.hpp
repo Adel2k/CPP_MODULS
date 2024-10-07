@@ -8,12 +8,13 @@ class Dog : public Animal
 {
 	private:
 		Brain* B;
+
 	public:
 		Dog();
 		Dog(Dog& other);
 		virtual ~Dog();
 
-		Dog&	operator=(Dog& other);
+		// Dog&	operator=(Dog& other);
 		void	makeSound();
 
 };

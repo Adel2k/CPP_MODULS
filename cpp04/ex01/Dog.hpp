@@ -14,8 +14,9 @@ class Dog : public Animal
 		Dog(Dog& other);
 		virtual ~Dog();
 
-		// Dog&	operator=(Dog& other);
+		Dog&	operator=(Dog& other);
 		void	makeSound();
+		void	printer();
 
 };
 

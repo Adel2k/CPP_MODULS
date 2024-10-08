@@ -22,8 +22,25 @@ int main()
 		cout << endl;
 	}
 	//---------------------------
-	// cout << endl << "\033[1;34m############################# Testing Deep Copy #############################\033[0m" << endl << endl;
-	//---------------------------
+	cout << endl << "\033[1;34m############################# Testing Deep Copy #############################\033[0m" << endl << endl;
+	Dog dog;
+	Dog temp;
+	temp = dog;
+	temp.printer();
+	cout << endl;
+	dog.printer();
+	cout << endl;
+
+
+	Cat cat;
+	Cat temp2;
+	temp2 = cat;
+	temp2.printer();
+	cout << endl;
+	cat.printer();
+	cout << endl;
+
+	// ---------------------------
 	cout << endl << "\033[1;31m############################# Deconstructing #############################\033[0m" << endl << endl;
 	for (int i = 0; i < 5; i++) {
 		cout << "Dogs are Dead -----> ";

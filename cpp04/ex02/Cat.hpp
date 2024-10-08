@@ -15,7 +15,7 @@ class Cat : public Animal
 
 		Cat&	operator=(Cat& other);
 		void	makeSound();
-
+		void	printer();
 };
 
 

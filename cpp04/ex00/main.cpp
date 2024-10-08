@@ -44,8 +44,5 @@ int main() {
 	cout << endl << i->getType() << " is dead--------> ";
 	delete i;
 
-
-
 	return 0;
-
 }

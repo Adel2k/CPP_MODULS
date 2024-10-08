@@ -19,8 +19,12 @@ Cat::Cat(Cat& other) : Animal(other) {
 
 Cat& Cat::operator=(Cat& other) {
 	cout << "\033[1;34mCat copy assignment constructor called.\033[0m" << endl;
-	if (this != &other)
+	if (this != &other) {
+		cout << "removing the Cat's Brain : ";
+		delete B;
 		this->type = other.type;
+		this->B = new Brain();
+	}
 	return *this;
 }
 
@@ -33,4 +37,8 @@ Cat::~Cat() {
 
 void	Cat::makeSound() {
 	cout << "\033[1;34mMeow 😺\033[0m" << endl;
+}
+
+void	Cat::printer() {
+	cout << "The address of the Cat's brain -----> " << static_cast<void*>(B);
 }

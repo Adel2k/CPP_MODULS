@@ -8,6 +8,7 @@ class Dog : public Animal
 {
 	private:
 		Brain* B;
+
 	public:
 		Dog();
 		Dog(Dog& other);
@@ -15,7 +16,7 @@ class Dog : public Animal
 
 		Dog&	operator=(Dog& other);
 		void	makeSound();
-
+		void	printer();
 };
 
 

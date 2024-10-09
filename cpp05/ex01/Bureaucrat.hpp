@@ -1,9 +1,9 @@
 #ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
-# include <iostream>
-# include <exception>
-# include <string>
+#include <iostream>
+#include <exception>
+#include <string>
 
 class Bureaucrat
 {

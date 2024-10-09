@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 using std::cout;
 using std::endl;
@@ -44,9 +45,16 @@ const char* Form::GradeTooLowException::what() const throw() {
 	return "Too Low";
 }
 
-Form::Form(std::string name, int sign_grade, int execute_grade) : Name(name), sign_grade(sign_grade), execute_grade(execute_grade) {
+Form::Form(const std::string name, int sign_grade, int execute_grade) : Name(name), sign_grade(sign_grade), execute_grade(execute_grade) {
 	cout << "\033[1;32mForm constructor with parametrs called.\033[0m" << endl;
-
+	if (sign_grade < 0)
+		throw GradeTooHighException();
+	if (sign_grade > 150)
+		throw GradeTooLowException();
+	if (execute_grade < 0)
+		throw GradeTooHighException();
+	if (execute_grade > 150)
+		throw GradeTooLowException();
 }
 
 std::string	Form::GetName() const {
@@ -63,6 +71,11 @@ int	Form::GetSign_grade() const {
 
 bool	Form::GetSign() const {
 	return sign;
+}
+
+void	Form::beSigned(Bureaucrat& b) {
+	if (b.getGrade() > 0 && b.getGrade() < 150)
+		sign = true;
 }
 
 

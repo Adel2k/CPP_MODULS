@@ -1,27 +1,44 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 
 
-int main () {
-	Bureaucrat a;
-	Form 	b;
-	
-	try
+int	main(void) {
+
 	{
-		Bureaucrat b("bob", 150);
-		// b.Decrement_grade();
-		// b.Decrement_grade();
-		// b.Decrement_grade();
-		// b.Decrement_grade();
-		// b.Decrement_grade();
-		// b.Decrement_grade();
-		std::cout << b << std::endl;
+		Bureaucrat	meta("Seda", 25);
+		Form		form("form", 25 , 75);
+
+		try
+		{
+			meta.signForm(form);
+			std::cout << form << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+		
 	}
-	catch(const std::exception& e)
+
 	{
-		std::cerr << e.what() << '\n';
-		return (1);
+		try {
+			Form	alpha("form 1", 0 , 75);
+		}
+		catch(const std::exception& e) {
+			std::cerr << e.what() << '\n';
+		}
+
+		try {
+			Form	alpha("form 2", 75 , 155);
+		}
+		catch(const std::exception& e) {
+			std::cerr << e.what() << '\n';
+		}
+		try {
+			Form	alpha("form 3", 75 , 75);
+		}
+		catch(const std::exception& e) {
+			std::cerr << e.what() << '\n';
+		}
 	}
-	return (0);
 
 }

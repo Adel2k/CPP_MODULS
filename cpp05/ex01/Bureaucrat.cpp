@@ -22,7 +22,6 @@ Bureaucrat::Bureaucrat(Bureaucrat& other) {
 Bureaucrat& Bureaucrat::operator=(Bureaucrat& other) {
 	std::cout << "\033[1;34mBureaucrat copy assignment constructor called.\033[0m" << std::endl;
 	if (this != &other) {
-		// this->Name = other.getName();
 		this->grade = other.getGrade();
 	}
 	return *this;
@@ -58,6 +57,13 @@ const char* Bureaucrat::GradeTooHighException::what() const throw() {
 }
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
 	return "Too Low";
+}
+
+void	Bureaucrat::signForm(Form& form) {
+	if (form.GetSign() == true)
+		std::cout << Name << " signed " << form.GetName() << std::endl;
+	else
+		std::cout << Name << " couldnt sign " << form.GetName() << " because " << std::endl;
 }
 
 std::string	Bureaucrat::getName() const {

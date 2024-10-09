@@ -4,7 +4,7 @@
 # include <iostream>
 # include <exception>
 
-
+class Bureaucrat;
 class Form
 {
 	private:
@@ -16,11 +16,13 @@ class Form
 		
 	public:
 		Form();
-		Form(std::string name, int sign_grade, int execute_grade);
+		Form(const std::string name, int sign_grade, int execute_grade);
 		Form(Form& other);
 		~Form();
 
 		Form& operator=(Form& other);
+
+		void	beSigned(Bureaucrat& b);
 
 		class GradeTooHighException : public std::exception {
 			const char*	what() const throw();

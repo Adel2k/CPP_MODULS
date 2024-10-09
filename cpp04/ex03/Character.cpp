@@ -46,7 +46,6 @@ void	Character::equip(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
 		if (inventory[i] == NULL) {
 			inventory[i] = m;
-			cout << "done" << endl;
 			return ;
 		}
 	}
@@ -62,8 +61,10 @@ void	Character::unequip(int idx) {
 void Character::use(int idx, ICharacter& target) {
 	if (inventory[idx] != NULL) {
 		inventory[idx]->use(target);
-		cout << "Slot " << idx << "is using " << target.getName() << endl;
+		// cout << "Slot " << idx << "is using " << target.getName() << endl;
 	}
-	else
+	else {
 		cout << "It doesnt exist" << endl;
+		return ;
+	}
 }

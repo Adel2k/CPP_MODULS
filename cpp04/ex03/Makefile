@@ -4,7 +4,7 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98  #-g3 -fsanitize=address
 CPP = c++ $(CPPFLAGS)
 
 SOURCES = main.cpp Ice.cpp Cure.cpp AMateria.cpp Character.cpp MateriaSource.cpp
-HEADERS = Ice.hpp Cure.hpp AMateria.hpp ICharacter.hpp Character.hpp MateriaSource.hpp IMateriaSource.hpp
+# HEADERS = Ice.hpp Cure.hpp AMateria.hpp ICharacter.hpp Character.hpp MateriaSource.hpp IMateriaSource.hpp
 OBJECS = $(SOURCES:.cpp=.o)
 
 all: $(PROGRAM_NAME)

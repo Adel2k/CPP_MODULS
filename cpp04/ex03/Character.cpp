@@ -4,7 +4,7 @@ using std::cout;
 using std::endl;
 
 //Orthodox
-Character::Character() : Name("No name"), quantity(0) {
+Character::Character() : Name("No name") {
 	cout << "\033[1;32mCharacter default constructor called.\033[0m" << endl;
 	for (int i = 0; i < 4; i++) {
 		inventory[i] = NULL;
@@ -30,7 +30,7 @@ Character::~Character() {
 }
 //
 
-Character::Character(std::string Name) : quantity(0) {
+Character::Character(std::string Name) {
 	cout << "\033[1;32mCharacter constructor with parametrs called.\033[0m" << endl;
 	for (int i = 0; i < 4; i++) {
 		inventory[i] = NULL;

@@ -48,10 +48,10 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : Name(name), grade(grade) {
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-	return "the grade is to high.";
+	return "\033[1;33mBureaucrat:The grade is to high.\033[0m";
 }
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-	return "the grade is to low.";
+	return "\033[1;33mBureaucrat:The grade is to low.\033[0m";
 }
 
 std::string	Bureaucrat::getName() const {

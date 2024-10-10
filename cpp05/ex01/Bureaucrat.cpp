@@ -15,9 +15,8 @@ Bureaucrat::Bureaucrat(Bureaucrat& other) {
 
 Bureaucrat& Bureaucrat::operator=(Bureaucrat& other) {
 	std::cout << "\033[1;34mBureaucrat copy assignment constructor called.\033[0m" << std::endl;
-	if (this != &other) {
+	if (this != &other)
 		this->grade = other.getGrade();
-	}
 	return *this;
 }
 
@@ -27,14 +26,16 @@ Bureaucrat::~Bureaucrat() {
 //
 
 int	Bureaucrat::Increment_grade() {
-	if (--grade < 0)
+	if (--grade < 1)
 		throw GradeTooHighException();
+	std::cout << "Incrementing the grade." << std::endl;
 	return grade;
 }
 
 int	Bureaucrat::Decrement_grade() {
-	if (++grade > 150)
+if (++grade > 150)
 		throw GradeTooLowException();
+	std::cout << "Decrementing the grade." << std::endl;
 	return grade;
 }
 

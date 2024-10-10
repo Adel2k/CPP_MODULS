@@ -26,7 +26,7 @@ Bureaucrat::~Bureaucrat() {
 //
 
 int	Bureaucrat::Increment_grade() {
-	if (--grade < 0)
+	if (--grade < 1)
 		throw GradeTooHighException();
 	std::cout << "Incrementing the grade." << std::endl;
 	return grade;
@@ -41,7 +41,7 @@ int	Bureaucrat::Decrement_grade() {
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : Name(name), grade(grade) {
 	cout << name << " bureaucrat constructor called with " << grade << " grade." << endl;
-	if (grade < 0)
+	if (grade < 1)
 		throw GradeTooHighException();
 	if (grade > 150)
 		throw GradeTooLowException();

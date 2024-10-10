@@ -11,7 +11,7 @@ int main () {
 		int			Grade = 100;
 
 		try {
-			cout << "\033[32mCreated Bureaucrat " << Name << " with " << Grade << " grade -------> \033[0m";
+			cout << "\033[32mTrying Bureaucrat " << Name << " with " << Grade << " grade -------> \033[0m";
 			Bureaucrat b(Name, Grade);
 			b.Decrement_grade();
 			b.Decrement_grade();
@@ -31,7 +31,7 @@ int main () {
 		int			Grade = 150;
 
 		try {
-			cout << "\033[32mCreated Bureaucrat " << Name << " with " << Grade << " grade -------> \033[0m";
+			cout << "\033[32mTrying Bureaucrat " << Name << " with " << Grade << " grade -------> \033[0m";
 			Bureaucrat b(Name, Grade);
 			std::cout << b << std::endl;
 		}
@@ -45,7 +45,7 @@ int main () {
 		int			Grade = 146;
 
 		try {
-			cout << "\033[32mCreated Bureaucrat " << Name << " with " << Grade << " grade -------> \033[0m";
+			cout << "\033[32mTrying Bureaucrat " << Name << " with " << Grade << " grade -------> \033[0m";
 			Bureaucrat b(Name, Grade);
 			b.Decrement_grade();
 			b.Decrement_grade();
@@ -65,20 +65,54 @@ int main () {
 		int			Grade = 150;
 
 		try {
-			cout << "\033[32mCreated Bureaucrat " << Name << " with " << Grade << " grade -------> \033[0m";
+			cout << "\033[32mTrying Bureaucrat " << Name << " with " << Grade << " grade -------> \033[0m";
 			Bureaucrat b(Name, Grade);
-			b.Decrement_grade();
-			b.Decrement_grade();
-			b.Decrement_grade();
-			b.Decrement_grade();
-			b.Decrement_grade();
-			b.Decrement_grade();
+			b.Increment_grade();
+			b.Increment_grade();
+			b.Increment_grade();
+			b.Increment_grade();
+			b.Increment_grade();
+			b.Increment_grade();
 			std::cout << b << std::endl;
 		}
 		catch(const std::exception& e) {
 			std::cerr << e.what() << '\n';
 		}
 	}
-	return (0);
+	cout << endl << "\033[33m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[0m" << endl << endl;
+	{
+		std::string	Name = "Potato";
+		int			Grade = 4;
 
+		try {
+			cout << "\033[32mTrying Bureaucrat " << Name << " with " << Grade << " grade -------> \033[0m";
+			Bureaucrat b(Name, Grade);
+			b.Increment_grade();
+			b.Increment_grade();
+			b.Increment_grade();
+			b.Increment_grade();
+			b.Increment_grade();
+			b.Increment_grade();
+			std::cout << b << std::endl;
+		}
+		catch(const std::exception& e) {
+			std::cerr << e.what() << '\n';
+		}
+	}
+	cout << endl << "\033[33m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[0m" << endl << endl;
+	{
+		std::string	Name = "Potato";
+		int			Grade = 0;
+
+		try {
+			cout << "\033[32mTrying Bureaucrat " << Name << " with " << Grade << " grade -------> \033[0m";
+			Bureaucrat b(Name, Grade);
+			std::cout << b << std::endl;
+		}
+		catch(const std::exception& e) {
+			std::cerr << e.what() << '\n';
+		}
+	}
+	cout << endl << "\033[33m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[0m" << endl << endl;
+	return (0);
 }

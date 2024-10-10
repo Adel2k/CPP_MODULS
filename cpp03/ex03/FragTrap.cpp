@@ -8,7 +8,7 @@ FragTrap::FragTrap() {
 	Attack_damage = 30;
 }
 
-FragTrap::FragTrap(FragTrap& other) {
+FragTrap::FragTrap(FragTrap& other) : ClapTrap() {
 	std::cout << "\033[1;34mFragTrap copy constructor called.\033[0m" << std::endl;
 	if (this == &other)
 		return ;

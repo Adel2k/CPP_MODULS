@@ -8,7 +8,7 @@ ScavTrap::ScavTrap() {
 	Attack_damage = 20;
 }
 
-ScavTrap::ScavTrap(ScavTrap& other) {
+ScavTrap::ScavTrap(ScavTrap& other) : ClapTrap(){
 	std::cout << "\033[1;34mScavTrap copy constructor called.\033[0m" << std::endl;
 	if (this == &other)
 		return ;

@@ -9,7 +9,7 @@ DiamondTrap::DiamondTrap() {
 	this->Name = ClapTrap::Name;
 
 }
-DiamondTrap::DiamondTrap(DiamondTrap& other) {
+DiamondTrap::DiamondTrap(DiamondTrap& other) : ScavTrap(), FragTrap() {
 	std::cout << "\033[1;34mDiamondTrap copy constructor called.\033[0m" << std::endl;
 	if (this == &other)
 		return ;

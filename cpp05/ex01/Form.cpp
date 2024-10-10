@@ -38,11 +38,11 @@ Form::~Form() {
 //
 
 const char* Form::GradeTooHighException::what() const throw() {
-	return "Too high";
+	return "\033[1;33mForm:The grade is to high.\033[0m";
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
-	return "Too Low";
+	return "\033[1;33mForm:The grade is to low.\033[0m";
 }
 
 Form::Form(const std::string name, int sign_grade, int execute_grade) : Name(name), sign_grade(sign_grade), execute_grade(execute_grade) {

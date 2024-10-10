@@ -4,13 +4,7 @@ using std::cout;
 using std::endl;
 
 //Orthodox
-Bureaucrat::Bureaucrat() : Name("No name"), grade(0) {
-	if (grade < 0)
-		throw GradeTooHighException();
-	if (grade > 150)
-		throw GradeTooLowException();
-	cout << "\033[1;32mBureaucrat default constructor called.\033[0m" << endl;
-}
+Bureaucrat::Bureaucrat() {}
 
 Bureaucrat::Bureaucrat(Bureaucrat& other) {
 	std::cout << "\033[1;34mBureaucrat copy constructor called.\033[0m" << std::endl;
@@ -45,7 +39,7 @@ int	Bureaucrat::Decrement_grade() {
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : Name(name), grade(grade) {
-	cout << "\033[1;32mBureaucrat constructor with parametrs called.\033[0m" << endl;
+	cout << "Bureaucrat constructor with parametrs called." << endl;
 	if (grade < 0)
 		throw GradeTooHighException();
 	if (grade > 150)
@@ -53,10 +47,10 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : Name(name), grade(grade) {
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-	return "Too High";
+	return "\033[1;33mBureaucrat:The grade is to high.\033[0m";
 }
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-	return "Too Low";
+	return "\033[1;33mBureaucrat:The grade is to low.\033[0m";
 }
 
 void	Bureaucrat::signForm(Form& form) {

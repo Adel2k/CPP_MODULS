@@ -74,7 +74,7 @@ bool	Form::GetSign() const {
 }
 
 void	Form::beSigned(Bureaucrat& b) {
-	if (b.getGrade() > 0 && b.getGrade() < 150)
+	if (b.getGrade() <= GetSign_grade())
 		sign = true;
 }
 

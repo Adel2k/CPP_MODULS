@@ -1,6 +1,8 @@
 # include "Animal.hpp"
 # include "Dog.hpp"
 # include "Cat.hpp"
+# include "WrongAnimal.hpp"
+
 
 
 using std::cout;
@@ -24,6 +26,9 @@ int main() {
 	cout << "Cat called -------> ";
 	Animal* i = new Cat();
 	cout << endl;
+	cout << "Wrong Animal called -------> ";
+	WrongAnimal g;
+	cout << endl;
 
 	cout  << endl << "\033[33m########### TESTING ###########\033[0m" << endl << endl;
 	cout << "The type is " << j->getType() << " " << endl;
@@ -34,6 +39,12 @@ int main() {
 	j->makeSound();
 	cout << "The " << meta->getType() << "'s sound is ";
 	meta->makeSound();
+	cout << "The type is " << g.getType() << " " << endl;
+	cout << "The " << g.getType() << "'s sound is ";
+	g.makeSound(); //will output the cat sound!
+
+
+
 	cout  << endl << "\033[31m########### DESTRUCTORS ###########\033[0m" << endl << endl;
 	cout << a->getType() << " is dead--------> ";
 	delete a;

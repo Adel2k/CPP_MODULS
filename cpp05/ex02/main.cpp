@@ -1,115 +1,30 @@
+#include <iostream>
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
 
-using std::cout;
-using std::endl;
+int main() {
+    try {
+        // Step 1: Create the form
+        ShrubberyCreationForm shrubForm("home");
 
-int main () {
+        // Step 2: Create a bureaucrat with a sufficient grade
+        Bureaucrat highRanker("Alice", 1); // Grade 1, high enough for anything
 
-	cout << endl << "\033[1;34m################# TESTING ###################\033[0m" << endl << endl;
-	{
-		std::string form = "AWS";
-		std::string	Name = "Bob";
-		int			Grade = 100;
-		int			S_Grade = 20;
-		int			E_Grade = 10;
+        // Step 3: Sign the form
+        // std::cout << "Signing the form...\n";
+		shrubForm.beSigned(highRanker);
+        highRanker.signForm(shrubForm);
 
-		try {
-			cout << "\033[32mTrying Bureaucrat " << Name << " with " << Grade << " grade -------> \033[0m";
-			Bureaucrat	b(Name, Grade);
-			Form		a(form, S_Grade, E_Grade);
+        // Step 4: Execute the form
+        // std::cout << "Executing the form...\n";
+        shrubForm.execute(highRanker);
 
-			std::cout << b << std::endl;
-			a.beSigned(b);
-			try {
-				b.signForm(a);
-			}
-			catch(const Bureaucrat::GradeTooLowException& e) {
-			std::cerr << e.what() << '\n';
-			}
-		}
-		catch(const Bureaucrat::GradeTooLowException& e) {
-			std::cerr << e.what() << '\n';
-		}
-	}
-	cout << endl << "\033[33m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[0m" << endl << endl;
-	{
-		std::string form = "CCNA";
-		std::string	Name = "Potato";
-		int			Grade = 10;
-		int			S_Grade = 20;
-		int			E_Grade = 10;
+        // Output to confirm
+        // std::cout << "ShrubberyCreationForm test completed. Check 'home_shrubbery' file.\n";
+    } catch (std::exception &e) {
+        // Catch and print any exceptions
+        std::cerr << "Error: " << e.what() << '\n';
+    }
 
-		try {
-			cout << "\033[32mTrying Bureaucrat " << Name << " with " << Grade << " grade -------> \033[0m";
-			Bureaucrat	b(Name, Grade);
-			Form		a(form, S_Grade, E_Grade);
-
-			std::cout << b << std::endl;
-			a.beSigned(b);
-			try {
-				b.signForm(a);
-			}
-			catch(const Bureaucrat::GradeTooLowException& e) {
-			std::cerr << e.what() << '\n';
-			}
-		}
-		catch(const Bureaucrat::GradeTooLowException& e) {
-			std::cerr << e.what() << '\n';
-		}
-	}
-	cout << endl << "\033[33m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[0m" << endl << endl;
-	{
-		std::string form = "AWS";
-		std::string	Name = "Pinvgvin";
-		int			Grade = 20;
-		int			S_Grade = 20;
-		int			E_Grade = 10;
-
-		try {
-			cout << "\033[32mTrying Bureaucrat " << Name << " with " << Grade << " grade -------> \033[0m";
-			Bureaucrat	b(Name, Grade);
-			Form		a(form, S_Grade, E_Grade);
-
-			std::cout << b << std::endl;
-			a.beSigned(b);
-			try {
-				b.signForm(a);
-			}
-			catch(const Bureaucrat::GradeTooLowException& e) {
-			std::cerr << e.what() << '\n';
-			}
-		}
-		catch(const Bureaucrat::GradeTooLowException& e) {
-			std::cerr << e.what() << '\n';
-		}
-	}
-	cout << endl << "\033[33m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[0m" << endl << endl;
-	{
-		std::string form = "AWS";
-		std::string	Name = "Pinvgvin";
-		int			Grade = 200;
-		int			S_Grade = 200;
-		int			E_Grade = 10;
-
-		try {
-			cout << "\033[32mTrying Bureaucrat " << Name << " with " << Grade << " grade -------> \033[0m";
-			Bureaucrat	b(Name, Grade);
-			Form		a(form, S_Grade, E_Grade);
-
-			std::cout << b << std::endl;
-			a.beSigned(b);
-			try {
-				b.signForm(a);
-			}
-			catch(const Bureaucrat::GradeTooLowException& e) {
-			std::cerr << e.what() << '\n';
-			}
-		}
-		catch(const Bureaucrat::GradeTooLowException& e) {
-			std::cerr << e.what() << '\n';
-		}
-	}
-	cout << endl << "\033[33m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[0m" << endl << endl;
-	return (0);
+    return 0;
 }

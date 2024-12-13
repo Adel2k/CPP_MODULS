@@ -4,37 +4,53 @@
 #include "RobotomyRequestForm.hpp"
 # include "Intern.hpp"
 
+using std::cout;
+using std::endl;
+
 
 int main() {
-	// try {
-		// ShrubberyCreationForm shrubForm("home");
-		// Bureaucrat highRanker("Alice", 1);
-		// shrubForm.beSigned(highRanker);
-		// highRanker.signForm(shrubForm);
-		// shrubForm.execute(highRanker);
+	cout << endl << "\033[1;34m################# TESTING ###################\033[0m" << endl << endl;
+	{
+		std::string	Name = "bglik";
+		int			Grade = 1;
 
-	// } catch (std::exception &e) {
-	// 	// Catch and print any exceptions
-	// 	std::cerr << "Error: " << e.what() << '\n';
-	// }
+		try {
+			cout << "\033[32mTrying Bureaucrat " << Name << " with " << Grade << " grade to sign -------> \033[0m" ;
+			Intern dog;
+			AForm *form;
+			Bureaucrat buro(Name, Grade);
 
-	// try
-	// {
-	// 	RobotomyRequestForm rob("robik");
-	// 	Bureaucrat highRanker("bob", 10);
-	// 	rob.beSigned(highRanker);
-	// 	highRanker.signForm(rob);
-	// 	rob.execute(highRanker);
-	// 	highRanker.executeForm(rob);
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
+			form = dog.makeForm("shrubbery creation", "Elfik");
+			form->beSigned(buro);
+			try {
+				cout << endl;
+				buro.signForm(*form);
+				cout << endl;
 
-	Intern dog;
-	AForm *ff;
-	ff = dog.makeForm("cat", "fff");
-	(void)ff;
+			}
+			catch(const Bureaucrat::GradeTooLowException& e) {
+				std::cerr << e.what() << '\n';
+			}
+			try {
+				form->execute(buro);
+			}
+			catch(const ShrubberyCreationForm::FormNotSignedException& e) {
+				std::cerr << e.what() << '\n';
+			}
+			try {
+				cout << endl;
+				buro.executeForm(*form);
+				cout << endl;
+			}
+			catch(const Bureaucrat::GradeTooLowException& e) {
+				std::cerr << e.what() << '\n';
+			}
+		}
+		catch (std::exception &e) {
+			std::cerr << "Error: " << e.what() << '\n';
+		}
+	}
+	cout << endl << "\033[33m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[0m" << endl << endl;
+	
 	return 0;
 }

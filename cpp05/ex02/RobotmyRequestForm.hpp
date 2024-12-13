@@ -1,5 +1,5 @@
-#ifndef RobotmyRequestForm_HPP
-# define ROBOTMYREQUESTFORM_HPP
+#ifndef RobotomyRequestForm_HPP
+# define RobotomyRequestForm_HPP
 
 # include <iostream>
 # include <exception>
@@ -7,17 +7,17 @@
 # include "AForm.hpp"
 # include "Bureaucrat.hpp"
 
-class RobotmyRequestForm : public AForm {
+class RobotomyRequestForm : public AForm {
 	private:
 		std::string	target;
 	
 	public:
-		RobotmyRequestForm();
-		RobotmyRequestForm(RobotmyRequestForm& other);
-		RobotmyRequestForm(std::string target);
-		~RobotmyRequestForm();
+		RobotomyRequestForm();
+		RobotomyRequestForm(RobotomyRequestForm& other);
+		RobotomyRequestForm(std::string target);
+		~RobotomyRequestForm();
 
-		RobotmyRequestForm&		operator=(RobotmyRequestForm& other);
+		RobotomyRequestForm&		operator=(RobotomyRequestForm& other);
 
 		virtual void			execute(Bureaucrat& executer) const;
 

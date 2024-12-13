@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
-#include "RobotmyRequestForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int main() {
 	// try {
@@ -18,7 +18,7 @@ int main() {
 
 	try
 	{
-		RobotmyRequestForm rob("robik");
+		RobotomyRequestForm rob("robik");
 		Bureaucrat highRanker("bob", 10);
 		rob.beSigned(highRanker);
 		highRanker.signForm(rob);

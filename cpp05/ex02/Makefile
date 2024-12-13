@@ -7,7 +7,7 @@ SOURCES = 	main.cpp \
 			Bureaucrat.cpp \
 			AForm.cpp \
 			ShrubberyCreationForm.cpp \
-			RobotmyRequestForm.cpp \
+			RobotomyRequestForm.cpp \
 			PresidentialPardonForm.cpp \
 
 OBJECS = $(SOURCES:.cpp=.o)

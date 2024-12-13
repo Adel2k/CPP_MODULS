@@ -55,7 +55,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 }
 
 void	Bureaucrat::signForm(Form& form) {
-	if (form.GetSign() == true)
+	if (form.Get_ifSigned() == true)
 		std::cout << Name << " signed " << form.GetName() << "." << std::endl;
 	else {
 		std::cout << Name << " couldn't sign " << form.GetName() << " because ";

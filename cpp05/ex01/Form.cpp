@@ -17,7 +17,7 @@ Form::Form() : Name("No name"), sign_grade(0), execute_grade(0), sign(false) {
 	cout << "\033[1;32mForm default constructor called.\033[0m" << endl;
 }
 
-Form::Form(Form& other) : sign_grade(other.GetSign_grade()), execute_grade(other.GetExecute_grade()), sign(false) {
+Form::Form(Form& other) : sign_grade(other.Get_ifSigned_grade()), execute_grade(other.GetExecute_grade()), sign(false) {
 	std::cout << "\033[1;34mForm copy constructor called.\033[0m" << std::endl;
 	if (this == &other)
 		return ;
@@ -27,7 +27,7 @@ Form::Form(Form& other) : sign_grade(other.GetSign_grade()), execute_grade(other
 Form& Form::operator=(Form& other) {
 	std::cout << "\033[1;34mForm copy assignment constructor called.\033[0m" << std::endl;
 	if (this != &other) {
-		this->sign = other.GetSign();
+		this->sign = other.Get_ifSigned();
 	}
 	return *this;
 }
@@ -65,16 +65,16 @@ int	Form::GetExecute_grade() const {
 	return execute_grade;
 }
 
-int	Form::GetSign_grade() const {
+int	Form::Get_ifSigned_grade() const {
 	return sign_grade;
 }
 
-bool	Form::GetSign() const {
+bool	Form::Get_ifSigned() const {
 	return sign;
 }
 
 void	Form::beSigned(Bureaucrat& b) {
-	if (b.getGrade() <= GetSign_grade())
+	if (b.getGrade() <= Get_ifSigned_grade())
 		sign = true;
 }
 

@@ -21,7 +21,6 @@ class AMateria
 		virtual void		use(ICharacter& target);
 
 		std::string const&	getType() const;
-
 };
 
 #endif

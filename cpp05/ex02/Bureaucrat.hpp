@@ -24,8 +24,16 @@ class Bureaucrat
 		int			Increment_grade();
 		int			Decrement_grade();
 		void		signForm(AForm& form);
+		void		executeForm(AForm& form);
 
+		//Operator override
+		Bureaucrat&	operator=(Bureaucrat& other);
 
+		//Getter
+		std::string	getName() const;
+		int			getGrade() const;
+
+		//Exceptions
 		class	GradeTooHighException : public std::exception {
 			public :
 				const char*	what() const throw();
@@ -35,13 +43,6 @@ class Bureaucrat
 			public :
 				const char*	what() const throw();
 		};
-
-		Bureaucrat&	operator=(Bureaucrat& other);
-
-		//Getter
-		std::string	getName() const;
-		int			getGrade() const;
-
 };
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& bureaucrat);

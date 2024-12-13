@@ -7,14 +7,14 @@ using std::endl;
 Bureaucrat::Bureaucrat() {}
 
 Bureaucrat::Bureaucrat(Bureaucrat& other) {
-	std::cout << "\033[1;34mBureaucrat copy constructor called.\033[0m" << std::endl;
+	cout << "\033[1;34mBureaucrat copy constructor called.\033[0m" << endl;
 	if (this == &other)
 		return ;
 	*this = other;
 }
 
 Bureaucrat& Bureaucrat::operator=(Bureaucrat& other) {
-	std::cout << "\033[1;34mBureaucrat copy assignment constructor called.\033[0m" << std::endl;
+	cout << "\033[1;34mBureaucrat copy assignment constructor called.\033[0m" << endl;
 	if (this != &other)
 		this->grade = other.getGrade();
 	return *this;
@@ -28,14 +28,14 @@ Bureaucrat::~Bureaucrat() {
 int	Bureaucrat::Increment_grade() {
 	if (--grade < 1)
 		throw GradeTooHighException();
-	std::cout << "Incrementing the grade." << std::endl;
+	cout << "Incrementing the grade." << endl;
 	return grade;
 }
 
 int	Bureaucrat::Decrement_grade() {
 if (++grade > 150)
 		throw GradeTooLowException();
-	std::cout << "Decrementing the grade." << std::endl;
+	cout << "Decrementing the grade." << endl;
 	return grade;
 }
 
@@ -47,22 +47,27 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : Name(name), grade(grade) {
 		throw GradeTooLowException();
 }
 
-const char* Bureaucrat::GradeTooHighException::what() const throw() {
-	return "\033[1;33mBureaucrat:The grade is to high.\033[0m";
-}
-const char* Bureaucrat::GradeTooLowException::what() const throw() {
-	return "\033[1;33mBureaucrat:The grade is to low.\033[0m";
-}
-
 void	Bureaucrat::signForm(AForm& form) {
-	if (form.GetSign() == true)
-		std::cout << Name << " signed " << form.GetName() << "." << std::endl;
+	if (form.Get_ifSigned()) {
+		cout << Name << " signed " << form.GetName() << "." << endl;
+	}
 	else {
-		std::cout << Name << " couldn't sign " << form.GetName() << " because The grade is to low." << endl;
+		cout << Name << " couldn't sign " << form.GetName() << " because The grade is to low." << endl;
 		throw GradeTooLowException();
 	}
 }
 
+void	Bureaucrat::executeForm(AForm& form) {
+	if (form.GetExecute_grade() >= this->getGrade()) {
+		cout << Name << " executed " << form.GetName() << "." << endl;
+	}
+	else {
+		cout << Name << " couldn't execute " << form.GetName() << " because The grade is to low." << endl;
+		throw GradeTooLowException();
+	}
+}
+
+//
 std::string	Bureaucrat::getName() const {
 	return Name;
 }
@@ -70,6 +75,15 @@ std::string	Bureaucrat::getName() const {
 int	Bureaucrat::getGrade() const {
 	return grade;
 }
+
+//
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "\033[1;33mBureaucrat:The grade is to high.\033[0m";
+}
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "\033[1;33mBureaucrat:The grade is to low.\033[0m";
+}
+//
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& bureaucrat) {
 	out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";

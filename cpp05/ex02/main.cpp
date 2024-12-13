@@ -23,6 +23,7 @@ int main() {
 		rob.beSigned(highRanker);
 		highRanker.signForm(rob);
 		rob.execute(highRanker);
+		highRanker.executeForm(rob);
 	}
 	catch(const std::exception& e)
 	{

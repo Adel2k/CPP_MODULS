@@ -3,7 +3,6 @@
 using std::cout;
 using std::endl;
 
-
 //Orthodox
 RobotmyRequestForm::RobotmyRequestForm() : AForm("RobotmyRequestForm", 72, 45), target("Elf") {
 	cout << "\033[1;32mRobotmyRequestForm default constructor called.\033[0m" << endl;
@@ -33,13 +32,13 @@ RobotmyRequestForm::RobotmyRequestForm(std::string target) : AForm("RobotmyReque
 	cout << "\033[1;32mRobotmyRequestForm constructor with parameter called for " << target << ".\033[0m" << endl;
 
 }
+
 std::string RobotmyRequestForm::getTarget() const {
 	return(target);
 }
 
-
 void RobotmyRequestForm::execute(Bureaucrat& executer) const{
-	if (!this->GetSign()) {
+	if (!this->Get_ifSigned()) {
 		throw AForm::FormNotSignedException();
 	}
 
@@ -51,7 +50,6 @@ void RobotmyRequestForm::execute(Bureaucrat& executer) const{
 		throw RobotmyRequestForm::RobotomyFailed();
 	}
 }
-
 
 const char* RobotmyRequestForm::RobotomyFailed::what() const throw() {
 	return "\033[1;33mRobotomyReaquestForm:The robotomy has failed.\033[0m\n";

@@ -12,7 +12,6 @@ class AForm
 		const int			execute_grade;
 		bool				sign;
 
-		
 	public:
 		AForm();
 		AForm(const std::string name, int sign_grade, int execute_grade);
@@ -26,9 +25,9 @@ class AForm
 
 		//Getter
 		std::string	GetName() const;
-		int			GetSign_grade() const;
+		int			Get_ifSigned_grade() const;
 		int			GetExecute_grade() const;
-		bool		GetSign() const;
+		bool		Get_ifSigned() const;
 
 		//Exceptions
 		class GradeTooHighException : public std::exception {

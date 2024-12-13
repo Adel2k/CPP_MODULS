@@ -38,7 +38,7 @@ std::string ShrubberyCreationForm::getTarget() const {
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat& executer) const {
-	if (!this->GetSign()) {
+	if (!this->Get_ifSigned()) {
 		throw FormNotSignedException();
 	}
 	if (executer.getGrade() <= this->GetExecute_grade()) {

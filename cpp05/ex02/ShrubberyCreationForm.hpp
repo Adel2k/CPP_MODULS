@@ -3,9 +3,9 @@
 
 # include <iostream>
 # include <exception>
-#include <fstream>
+# include <fstream>
 # include "AForm.hpp"
-#include "Bureaucrat.hpp"
+# include "Bureaucrat.hpp"
 
 
 class ShrubberyCreationForm : public AForm {

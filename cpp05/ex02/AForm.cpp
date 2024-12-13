@@ -35,16 +35,8 @@ AForm& AForm::operator=(AForm& other) {
 AForm::~AForm() {
 	cout << "\033[1;31mAForm destructor called.\033[0m" << endl;
 }
+
 //
-
-const char* AForm::GradeTooHighException::what() const throw() {
-	return "\033[1;33mAForm:The grade is to high.\033[0m";
-}
-
-const char* AForm::GradeTooLowException::what() const throw() {
-	return "\033[1;33mAForm:The grade is to low.\033[0m";
-}
-
 AForm::AForm(const std::string name, int sign_grade, int execute_grade) : Name(name), sign_grade(sign_grade), execute_grade(execute_grade) {
 	cout << "\033[1;32mAForm constructor with parametrs called.\033[0m" << endl;
 	if (sign_grade < 0)
@@ -79,8 +71,23 @@ void	AForm::beSigned(Bureaucrat& b) {
 	}
 }
 
+//
 
+const char* AForm::GradeTooHighException::what() const throw() {
+	return "\033[1;33mAForm:The grade is to high.\033[0m";
+}
 
+const char* AForm::GradeTooLowException::what() const throw() {
+	return "\033[1;33mAForm:The grade is to low.\033[0m";
+}
+
+const char* AForm::NoFile::what() const throw() {
+	return "\033[1;33mAForm:Can not open the file.\033[0m";
+}
+
+const char* AForm::FormNotSignedException::what() const throw() {
+	return "\033[1;33mAForm:The form havent been signed.\033[0m";
+}
 std::ostream&	operator<<(std::ostream& out, AForm& AForm) {
 	out << AForm.GetName();
 	return out;

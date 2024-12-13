@@ -1,30 +1,33 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotmyRequestForm.hpp"
 
 int main() {
-    try {
-        // Step 1: Create the form
-        ShrubberyCreationForm shrubForm("home");
+	// try {
+		// ShrubberyCreationForm shrubForm("home");
+		// Bureaucrat highRanker("Alice", 1);
+		// shrubForm.beSigned(highRanker);
+		// highRanker.signForm(shrubForm);
+		// shrubForm.execute(highRanker);
 
-        // Step 2: Create a bureaucrat with a sufficient grade
-        Bureaucrat highRanker("Alice", 1); // Grade 1, high enough for anything
+	// } catch (std::exception &e) {
+	// 	// Catch and print any exceptions
+	// 	std::cerr << "Error: " << e.what() << '\n';
+	// }
 
-        // Step 3: Sign the form
-        // std::cout << "Signing the form...\n";
-		shrubForm.beSigned(highRanker);
-        highRanker.signForm(shrubForm);
-
-        // Step 4: Execute the form
-        // std::cout << "Executing the form...\n";
-        shrubForm.execute(highRanker);
-
-        // Output to confirm
-        // std::cout << "ShrubberyCreationForm test completed. Check 'home_shrubbery' file.\n";
-    } catch (std::exception &e) {
-        // Catch and print any exceptions
-        std::cerr << "Error: " << e.what() << '\n';
-    }
-
-    return 0;
+	try
+	{
+		RobotmyRequestForm rob("robik");
+		Bureaucrat highRanker("bob", 10);
+		rob.beSigned(highRanker);
+		highRanker.signForm(rob);
+		rob.execute(highRanker);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+	return 0;
 }

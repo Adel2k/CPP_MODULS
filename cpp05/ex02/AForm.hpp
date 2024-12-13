@@ -19,11 +19,18 @@ class AForm
 		AForm(AForm& other);
 		virtual ~AForm();
 
-		AForm& operator=(AForm& other);
+		AForm&			operator=(AForm& other);
 
-		void	beSigned(Bureaucrat& b);
+		void			beSigned(Bureaucrat& b);
 		virtual void	execute(Bureaucrat& executer) const = 0;
 
+		//Getter
+		std::string	GetName() const;
+		int			GetSign_grade() const;
+		int			GetExecute_grade() const;
+		bool		GetSign() const;
+
+		//Exceptions
 		class GradeTooHighException : public std::exception {
 			const char*	what() const throw();
 		};
@@ -32,12 +39,15 @@ class AForm
 			const char*	what() const throw();
 		};
 
-		//Getter
-		std::string	GetName() const;
-		int			GetSign_grade() const;
-		int			GetExecute_grade() const;
-		bool		GetSign() const;
+		class NoFile : public std::exception {
+			public :
+				const char*	what() const throw();
+		};
 
+		class FormNotSignedException : public std::exception {
+			public :
+				const char*	what() const throw();
+		};
 };
 
 std::ostream&	operator<<(std::ostream& out, AForm& AForm);

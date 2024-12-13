@@ -3,7 +3,7 @@ PROGRAM_NAME = Bureaucrat
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98  #-g3 -fsanitize=address
 CPP = c++ $(CPPFLAGS)
 
-SOURCES = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
+SOURCES = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotmyRequestForm.cpp
 # HEADERS = Bureaucrat.hpp
 OBJECS = $(SOURCES:.cpp=.o)
 

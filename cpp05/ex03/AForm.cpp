@@ -17,7 +17,7 @@ AForm::AForm() : Name("No name"), sign_grade(0), execute_grade(0), sign(false) {
 	cout << "\033[1;32mAForm default constructor called.\033[0m" << endl;
 }
 
-AForm::AForm(AForm& other) : sign_grade(other.Get_ifSigned_grade()), execute_grade(other.GetExecute_grade()), sign(false) {
+AForm::AForm(AForm& other) : sign_grade(other.GetSign_grade()), execute_grade(other.GetExecute_grade()), sign(false) {
 	std::cout << "\033[1;34mAForm copy constructor called.\033[0m" << std::endl;
 	if (this == &other)
 		return ;
@@ -57,7 +57,7 @@ int	AForm::GetExecute_grade() const {
 	return execute_grade;
 }
 
-int	AForm::Get_ifSigned_grade() const {
+int	AForm::GetSign_grade() const {
 	return sign_grade;
 }
 
@@ -66,7 +66,7 @@ bool	AForm::Get_ifSigned() const {
 }
 
 void	AForm::beSigned(Bureaucrat& b) {
-	if (b.getGrade() <= Get_ifSigned_grade()) {
+	if (b.getGrade() <= GetSign_grade()) {
 		sign = true;
 	}
 }

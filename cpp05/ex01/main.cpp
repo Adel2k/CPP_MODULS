@@ -25,7 +25,7 @@ int main () {
 				b.signForm(a);
 			}
 			catch(const Bureaucrat::GradeTooLowException& e) {
-			std::cerr << e.what() << '\n';
+				std::cerr << e.what() << '\n';
 			}
 		}
 		catch(const Bureaucrat::GradeTooLowException& e) {

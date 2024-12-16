@@ -1,4 +1,12 @@
 #include "Zombie.hpp"
+#include <sstream>
+#include <string>
+
+std::string intToString(int number) {
+	std::ostringstream oss;
+	oss << number;
+	return oss.str();
+}
 
 Zombie* zombieHorde(int N, std::string name)
 {
@@ -8,10 +16,10 @@ Zombie* zombieHorde(int N, std::string name)
 		return NULL;
 	}
 	z = new Zombie[N];
-	if (!New)
+	if (!z)
 		std::cout << "Allocation failed" << std::endl;
 	for (int i = 0; i < N; i++) {
-		z[i].setName(name + std::to_string(i + 1));
+		z[i].setName(name + intToString(i + 1));
 		z[i].announce();
 	}
 	return z;

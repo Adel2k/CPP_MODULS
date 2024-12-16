@@ -3,6 +3,6 @@
 int main()
 {
 	Zombie *head;
-	head = zombieHorde(5, "ADEL");
+	head = zombieHorde(5, "ELF");
 	delete[] head;
 }

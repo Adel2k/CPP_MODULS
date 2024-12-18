@@ -5,7 +5,7 @@
 # include <iomanip>
 # include <iostream>
 
-# define MAX_NUM 8
+# define MAX_NUM 3
 
 class PhoneBook {
 	public:

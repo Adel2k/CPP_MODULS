@@ -18,7 +18,7 @@ void PhoneBook::addContact(Contact& new_contact)
 	}
 	else
 	{
-		size = 0;
+		size %= MAX_NUM;
 		contacts[size++] = new_contact;
 	}
 }
@@ -56,9 +56,9 @@ void	PhoneBook::search()
 	
 	while (getline(std::cin, input))
 	{
-		if (input[0] >= '0' && input[0] <= '7') {
-			index = input[0] - '0';
-			if (index < size) {
+		index = input[0] - '0';
+		if (index >= 0 && index <= MAX_NUM) {
+			if (index < len) {
 				std::cout << "First name: " << contacts[index].get_first_name() << std::endl;
 				std::cout << "Last name: " << contacts[index].get_last_name() << std::endl;
 				std::cout << "Nickname: " << contacts[index].get_nickname() << std::endl;

@@ -27,6 +27,11 @@ MateriaSource& MateriaSource::operator=(MateriaSource& other) {
 
 MateriaSource::~MateriaSource() {
 	cout << "\033[1;31mMateriaSource destructor called.\033[0m" << endl;
+	for (int i = 0; i < 4; i++) {
+		if (inventory[i]) {
+			delete inventory[i];
+		}
+	}
 }
 //
 

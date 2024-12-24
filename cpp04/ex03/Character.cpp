@@ -61,7 +61,7 @@ void	Character::unequip(int idx) {
 void Character::use(int idx, ICharacter& target) {
 	if (inventory[idx] != NULL) {
 		inventory[idx]->use(target);
-		// cout << "Slot " << idx << "is using " << target.getName() << endl;
+		cout << "Slot " << idx << "is using " << target.getName() << endl;
 	}
 	else {
 		cout << "It doesnt exist" << endl;

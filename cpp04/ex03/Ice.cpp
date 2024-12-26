@@ -11,17 +11,15 @@ Ice::Ice() {
 	type = "ice";
 }
 
-Ice::Ice(Ice& other) : AMateria(other) {
+Ice::Ice(const Ice& other) : AMateria(other) {
 	std::cout << "\033[1;34mIce copy constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return ;
 	*this = other;
 }
 
-Ice& Ice::operator=(Ice& other) {
-	std::cout << "\033[1;34mIce copy assignment constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return *this;
+Ice& Ice::operator=(const Ice& other) {
+	std::cout << "\033[1;34mIce copy assignment called.\033[0m" << std::endl;
+	if (this != &other)
+		AMateria::operator=(other);
 	return *this;
 }
 

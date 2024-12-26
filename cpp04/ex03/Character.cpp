@@ -11,17 +11,20 @@ Character::Character() : Name("No name") {
 	}
 }
 
-Character::Character(Character& other) {
+Character::Character(const Character& other) {
 	std::cout << "\033[1;34mCharacter copy constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return ;
 	*this = other;
 }
 
-Character& Character::operator=(Character& other) {
-	std::cout << "\033[1;34mCharacter copy assignment constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return *this;
+Character& Character::operator=(const Character& other) {
+	std::cout << "\033[1;34mCharacter copy assignment called.\033[0m" << std::endl;
+	if (this != &other) {
+		this->Name = other.getName();
+		for (int i = 0; i < 4; i++) {
+			if (inventory[i])
+				this->inventory[i] = other.inventory[i];
+		}
+	}
 	return *this;
 }
 

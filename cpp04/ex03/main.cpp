@@ -69,6 +69,6 @@ int main(void) {
 		std::cout << "\033[35m***********************************************\033[0m" << std::endl;
 		std::cout << std::endl;
 	}
-	system("leaks War");
+	// system("leaks War");
 	return 0;
 }

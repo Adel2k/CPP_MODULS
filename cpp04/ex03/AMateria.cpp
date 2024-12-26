@@ -9,17 +9,14 @@ AMateria::AMateria() {
 	cout << "\033[1;32mAMateria default constructor called.\033[0m" << endl;
 }
 
-AMateria::AMateria(AMateria& other) {
+AMateria::AMateria(const AMateria& other) {
 	std::cout << "\033[1;34mAMateria copy constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return ;
 	*this = other;
 }
 
-AMateria& AMateria::operator=(AMateria& other) {
-	std::cout << "\033[1;34mAMateria copy assignment constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return *this;
+AMateria& AMateria::operator=(const AMateria& other) {
+	std::cout << "\033[1;34mAMateria copy assignment called.\033[0m" << std::endl;
+	this->type = other.type;
 	return *this;
 }
 

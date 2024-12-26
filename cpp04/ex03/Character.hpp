@@ -14,11 +14,11 @@ class Character : public ICharacter
 
 	public:
 		Character();
-		Character(std::string Name);
-		Character(Character& other);
+		Character(const std::string Name);
+		Character(const Character& other);
 		~Character();
 
-		Character&			operator=(Character& other);
+		Character&			operator=(const Character& other);
 		const std::string&	getName() const;
 		void				equip(AMateria* m);
 		void				unequip(int idx);

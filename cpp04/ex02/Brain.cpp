@@ -8,14 +8,14 @@ Brain::Brain() {
 	cout << "\033[1;32mBrain default constructor called.\033[0m" << endl;
 }
 
-Brain::Brain(Brain& other) {
+Brain::Brain(const Brain& other) {
 	std::cout << "\033[1;34mBrain copy constructor called.\033[0m" << std::endl;
 	if (this == &other)
 		return ;
 	*this = other;
 }
 
-Brain& Brain::operator=(Brain& other) {
+Brain& Brain::operator=(const Brain& other) {
 	std::cout << "\033[1;34mBrain copy assignment constructor called.\033[0m" << std::endl;
 	if (this == &other)
 		return *this;

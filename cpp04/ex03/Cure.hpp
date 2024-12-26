@@ -7,10 +7,10 @@ class Cure : public AMateria
 {
 	public:
 		Cure();
-		Cure(Cure& other);
+		Cure(const Cure& other);
 		~Cure();
 
-		Cure&		operator=(Cure& other);
+		Cure&		operator=(const Cure& other);
 		AMateria*	clone() const;
 		void		use(ICharacter& target);
 };

@@ -31,12 +31,10 @@ int main() {
 	cout << endl;
 
 	cout  << endl << "\033[33m########### TESTING ###########\033[0m" << endl << endl;
-	cout << "The type is " << j->getType() << " " << endl;
-	cout << "The type is " << i->getType() << " " << endl;
 	cout << "The " << j->getType() << "'s sound is ";
-	i->makeSound(); //will output the cat sound!
+	j->makeSound(); //will output the cat sound!
 	cout << "The " << i->getType() << "'s sound is ";
-	j->makeSound();
+	i->makeSound();
 	cout << "The " << meta->getType() << "'s sound is ";
 	meta->makeSound();
 	cout << "The type is " << g.getType() << " " << endl;

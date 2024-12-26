@@ -8,18 +8,15 @@ Animal::Animal() {
 	cout << "\033[1;32mAnimal default constructor called.\033[0m" << endl;
 }
 
-Animal::Animal(Animal& other) {
+Animal::Animal(const Animal& other) {
 	std::cout << "\033[1;34mAnimal copy constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return ;
 	*this = other;
 }
 
-Animal& Animal::operator=(Animal& other) {
-	std::cout << "\033[1;34mAnimal copy assignment constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return *this;
-	this->type = other.type;
+Animal& Animal::operator=(const Animal& other) {
+	std::cout << "\033[1;34mAnimal copy assignment called.\033[0m" << std::endl;
+	if (this != &other)
+		this->type = other.type;
 	return *this;
 }
 

@@ -10,12 +10,12 @@ class Cat : public Animal
 		Brain* B;
 	public:
 		Cat();
-		Cat(Cat& other);
+		Cat(const Cat& other);
 		virtual ~Cat();
 
-		Cat&	operator=(Cat& other);
-		void	makeSound();
-		void	printer();
+		Cat&	operator=(const Cat& other);
+		void	makeSound() const;
+		void	printer() const;
 };
 
 

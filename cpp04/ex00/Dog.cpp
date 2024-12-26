@@ -9,17 +9,15 @@ Dog::Dog() {
 	type = "Dog";
 }
 
-Dog::Dog(Dog& other) : Animal(other) {
+Dog::Dog(const Dog& other) : Animal(other) {
 	std::cout << "\033[1;34mDog copy constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return ;
 	*this = other;
 }
 
-Dog& Dog::operator=(Dog& other) {
+Dog& Dog::operator=(const Dog& other) {
 	std::cout << "\033[1;34mDog copy assignment constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return *this;
+	if (this != &other)
+		this->type = other.type;
 	return *this;
 }
 
@@ -28,6 +26,6 @@ Dog::~Dog() {
 }
 //
 
-void	Dog::makeSound() {
+void	Dog::makeSound() const {
 	cout << "\033[1;35mHaf\033[0m" << endl;
 }

@@ -11,15 +11,15 @@ MateriaSource::MateriaSource() {
 	}
 }
 
-MateriaSource::MateriaSource(MateriaSource& other) {
+MateriaSource::MateriaSource(const MateriaSource& other) {
 	std::cout << "\033[1;34mMateriaSource copy constructor called.\033[0m" << std::endl;
 	if (this == &other)
 		return ;
 	*this = other;
 }
 
-MateriaSource& MateriaSource::operator=(MateriaSource& other) {
-	std::cout << "\033[1;34mMateriaSource copy assignment constructor called.\033[0m" << std::endl;
+MateriaSource& MateriaSource::operator=(const MateriaSource& other) {
+	std::cout << "\033[1;34mMateriaSource copy assignment called.\033[0m" << std::endl;
 	if (this == &other)
 		return *this;
 	return *this;

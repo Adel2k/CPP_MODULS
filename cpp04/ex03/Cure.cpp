@@ -10,17 +10,15 @@ Cure::Cure() {
 	type = "cure";
 }
 
-Cure::Cure(Cure& other) : AMateria(other) {
+Cure::Cure(const Cure& other) : AMateria(other) {
 	std::cout << "\033[1;34mCure copy constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return ;
 	*this = other;
 }
 
-Cure& Cure::operator=(Cure& other) {
-	std::cout << "\033[1;34mCure copy assignment constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return *this;
+Cure& Cure::operator=(const Cure& other) {
+	std::cout << "\033[1;34mCure copy assignment called.\033[0m" << std::endl;
+	if (this != &other)
+		AMateria::operator=(other);
 	return *this;
 }
 

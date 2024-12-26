@@ -11,12 +11,12 @@ class Dog : public Animal
 
 	public:
 		Dog();
-		Dog(Dog& other);
+		Dog(const Dog& other);
 		virtual ~Dog();
 
-		Dog&	operator=(Dog& other);
-		void	makeSound();
-		void	printer();
+		Dog&	operator=(const Dog& other);
+		void	makeSound() const;
+		void	printer()const;
 
 };
 

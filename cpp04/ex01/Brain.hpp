@@ -9,10 +9,10 @@ class Brain
 
 	public:
 		Brain();
-		Brain(Brain& other);
+		Brain(const Brain& other);
 		~Brain();
 
-		Brain& operator=(Brain& other);
+		Brain& operator=(const Brain& other);
 };
 
 

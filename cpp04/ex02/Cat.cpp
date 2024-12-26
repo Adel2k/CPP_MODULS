@@ -10,15 +10,13 @@ Cat::Cat(){
 	type = "Cat";
 }
 
-Cat::Cat(Cat& other) : Animal(other) {
+Cat::Cat(const Cat& other) : Animal(other) {
 	cout << "\033[1;34mCat copy constructor called.\033[0m" << endl;
-	if (this == &other)
-		return ;
-	*this = other;
+	this->B = new Brain();
 }
 
-Cat& Cat::operator=(Cat& other) {
-	cout << "\033[1;34mCat copy assignment constructor called.\033[0m" << endl;
+Cat& Cat::operator=(const Cat& other) {
+	cout << "\033[1;34mCat copy assignment called.\033[0m" << endl;
 	if (this != &other) {
 		cout << "removing the Cat's Brain : ";
 		delete B;
@@ -35,10 +33,10 @@ Cat::~Cat() {
 
 //
 
-void	Cat::makeSound() {
+void	Cat::makeSound() const {
 	cout << "\033[1;34mMeow 😺\033[0m" << endl;
 }
 
-void	Cat::printer() {
+void	Cat::printer() const {
 	cout << "The address of the Cat's brain -----> " << static_cast<void*>(B);
 }

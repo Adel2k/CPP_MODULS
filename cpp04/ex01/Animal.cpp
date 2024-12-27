@@ -26,7 +26,7 @@ Animal::~Animal() {
 
 //
 
-void	Animal::makeSound() {
+void	Animal::makeSound() const{
 	cout << "\033[1;35mNo Sound\033[0m" << endl;
 }
 

@@ -13,8 +13,6 @@ MateriaSource::MateriaSource() {
 
 MateriaSource::MateriaSource(const MateriaSource& other) {
 	std::cout << "\033[1;34mMateriaSource copy constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return ;
 	*this = other;
 }
 
@@ -44,7 +42,6 @@ void	MateriaSource::learnMateria(AMateria* other) {
 			return ;
 		}
 	}
-	
 }
 
 AMateria*	MateriaSource::createMateria(std::string const & type) {

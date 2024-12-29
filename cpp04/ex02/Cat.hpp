@@ -3,11 +3,11 @@
 
 # include "Animal.hpp"
 # include "Brain.hpp"
-
 class Cat : public Animal
 {
 	private:
 		Brain* B;
+
 	public:
 		Cat();
 		Cat(const Cat& other);
@@ -16,6 +16,7 @@ class Cat : public Animal
 		Cat&	operator=(const Cat& other);
 		void	makeSound() const;
 		void	printer() const;
+
 };
 
 

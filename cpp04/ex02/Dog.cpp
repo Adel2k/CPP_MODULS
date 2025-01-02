@@ -12,7 +12,7 @@ Dog::Dog() {
 
 Dog::Dog(const Dog& other) : Animal(other) {
 	std::cout << "\033[1;34mDog copy constructor called.\033[0m" << std::endl;
-	this->B = new Brain();
+	this->B = new Brain(*(other.B));
 }
 
 Dog& Dog::operator=(const Dog& other) {
@@ -21,7 +21,7 @@ Dog& Dog::operator=(const Dog& other) {
 		cout << "removing the Dog's Brain : ";
 		delete B;
 		this->type = other.type;
-		this->B = new Brain();
+		this->B = new Brain(*(other.B));
 	}
 	return *this;
 }

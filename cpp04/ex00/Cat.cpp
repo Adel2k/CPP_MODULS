@@ -4,7 +4,7 @@ using std::cout;
 using std::endl;
 
 //Orthodox
-Cat::Cat(){
+Cat::Cat() {
 	cout << "\033[1;32mCat default constructor called.\033[0m" << endl;
 	type = "Cat";
 }

@@ -12,7 +12,7 @@ Cat::Cat(){
 
 Cat::Cat(const Cat& other) : Animal(other) {
 	cout << "\033[1;34mCat copy constructor called.\033[0m" << endl;
-	this->B = new Brain();
+	this->B = new Brain(*(other.B));
 }
 
 Cat& Cat::operator=(const Cat& other) {
@@ -21,7 +21,7 @@ Cat& Cat::operator=(const Cat& other) {
 		cout << "removing the Cat's Brain : ";
 		delete B;
 		this->type = other.type;
-		this->B = new Brain();
+		this->B = new Brain(*other.B);
 	}
 	return *this;
 }

@@ -52,7 +52,7 @@ int main()
 		delete k[i];
 		cout << endl;
 	}
-	// system("leaks Animal");
+	//system("leaks Animal");
 	return 0;
 	
 }

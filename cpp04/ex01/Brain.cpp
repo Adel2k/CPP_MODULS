@@ -10,16 +10,15 @@ Brain::Brain() {
 
 Brain::Brain(const Brain& other) {
 	std::cout << "\033[1;34mBrain copy constructor called.\033[0m" << std::endl;
-	for (int i = 0; i <= 100; i++) {
+	for (int i = 0; i < 100; i++) {
 		ideas[i] = other.ideas[i];
 	}
-	*this = other;
 }
 
 Brain& Brain::operator=(const Brain& other) {
 	std::cout << "\033[1;34mBrain copy assignment called.\033[0m" << std::endl;
 	if (this != &other) {
-		for (int i = 0; i <= 100; i++) {
+		for (int i = 0; i < 100; i++) {
 			ideas[i] = other.ideas[i];
 		}
 	}

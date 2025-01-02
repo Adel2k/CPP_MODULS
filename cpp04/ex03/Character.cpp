@@ -30,6 +30,10 @@ Character& Character::operator=(const Character& other) {
 
 Character::~Character() {
 	cout << "\033[1;31mCharacter destructor called.\033[0m" << endl;
+	for (int i = 0; i < 4; i++) {
+		if (inventory[i])
+			delete inventory[i];
+	}
 }
 //
 

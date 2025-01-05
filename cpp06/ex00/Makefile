@@ -1,6 +1,6 @@
 PROGRAM_NAME = Conventer
 
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
+CPPFLAGS = -Wall -Wextra -Werror #-std=c++98 #-g3 -fsanitize=address
 CPP = c++ $(CPPFLAGS)
 
 SOURCES = main.cpp ScalarConverter.cpp

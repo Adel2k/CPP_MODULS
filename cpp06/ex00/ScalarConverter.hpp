@@ -1,7 +1,10 @@
 #ifndef SCALARCONVERTER_HPP
 # define SCALARCONVERTER_HPP
 
+# include <iomanip> 
 # include <iostream>
+# include <cmath>
+
 
 class ScalarConverter
 {

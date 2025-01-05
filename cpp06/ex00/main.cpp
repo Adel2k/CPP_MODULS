@@ -2,7 +2,6 @@
 
 using std::cout;
 using std::endl;
-#include <cstring> 
 
 int validation(char *av) {
     int i = 0;

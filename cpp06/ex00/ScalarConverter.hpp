@@ -4,6 +4,7 @@
 # include <iomanip> 
 # include <iostream>
 # include <cmath>
+# include <cstring> 
 
 
 class ScalarConverter
@@ -15,9 +16,11 @@ class ScalarConverter
 
         ScalarConverter& operator=(const ScalarConverter& other);
 
+
     public:
         static void convert(const std::string &lit);
-
+        static void convertChar(const std::string& lit);
+        static void convertDigit(const std::string& lit);
 };
 
 

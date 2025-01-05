@@ -36,16 +36,20 @@ void ScalarConverter::convert(const std::string& lit) {
     else {
         try {
             int iValue = std::stoi(lit);
-            if ((iValue >= 0 && iValue <= 31) || iValue == 127)
+            if ((iValue >= 0 && iValue <= 31) || iValue == 127) 
                 cout << "char\t->\tNon-printable" << endl;
+            else if (iValue < 0)
+                cout << "char\t->\tImpossible" << endl;
             else
                 cout << "char\t->\t" << "'" << static_cast<char>(iValue) << "'" << endl;
             cout << "int\t->\t" << iValue << endl;
         }
         catch (const std::invalid_argument& e) {
+            cout << "char\t->\tImpossible" << endl;
             cout << "int\t->\tImpossible" << endl;
         }
         catch (const std::out_of_range& e) {
+            cout << "char\t->\tImpossible" << endl;
             cout << "int\t->\tImpossible" << endl;
         }
 
@@ -80,6 +84,5 @@ void ScalarConverter::convert(const std::string& lit) {
         catch (const std::out_of_range& e) {
             cout << "double\t->\tImpossible" << endl;
         }
-
     }
 }

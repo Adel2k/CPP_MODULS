@@ -10,14 +10,12 @@ ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm& other) : AForm(other), target(other.getTarget()) {
-	std::cout << "\033[1;34mShrubberyCreationForm copy constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return ;
+	cout << "\033[1;34mShrubberyCreationForm copy constructor called.\033[0m" << endl;
 	*this = other;
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm& other) {
-	std::cout << "\033[1;34mShrubberyCreationForm copy assignment constructor called.\033[0m" << std::endl;
+	cout << "\033[1;34mShrubberyCreationForm copy assignment called.\033[0m" << endl;
 	if (this != &other) {
 		this->target = other.getTarget();
 	}

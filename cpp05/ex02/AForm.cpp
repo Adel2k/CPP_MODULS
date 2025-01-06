@@ -19,13 +19,11 @@ AForm::AForm() : Name("No name"), sign_grade(0), execute_grade(0), sign(false) {
 
 AForm::AForm(AForm& other) : sign_grade(other.GetSign_grade()), execute_grade(other.GetExecute_grade()), sign(false) {
 	std::cout << "\033[1;34mAForm copy constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return ;
 	*this = other;
 }
 
 AForm& AForm::operator=(AForm& other) {
-	std::cout << "\033[1;34mAForm copy assignment constructor called.\033[0m" << std::endl;
+	std::cout << "\033[1;34mAForm copy assignment called.\033[0m" << std::endl;
 	if (this != &other) {
 		this->sign = other.Get_ifSigned();
 	}

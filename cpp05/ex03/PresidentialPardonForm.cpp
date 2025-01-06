@@ -9,14 +9,12 @@ PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm& other) : AForm(other), target(other.getTarget()) {
-	std::cout << "\033[1;34mPresidentialPardonForm copy constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return ;
+	cout << "\033[1;34mPresidentialPardonForm copy constructor called.\033[0m" << endl;
 	*this = other;
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm& other) {
-	std::cout << "\033[1;34mPresidentialPardonForm copy assignment constructor called.\033[0m" << std::endl;
+	cout << "\033[1;34mPresidentialPardonForm copy assignment called.\033[0m" << endl;
 	if (this != &other) {
 		this->target = other.getTarget();
 	}

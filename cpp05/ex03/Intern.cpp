@@ -12,12 +12,12 @@ Intern::Intern() {
 }
 
 Intern::Intern(Intern& other) {
-	std::cout << "\033[1;34mIntern copy constructor called.\033[0m" << std::endl;
+	cout << "\033[1;34mIntern copy constructor called.\033[0m" << endl;
 	*this = other;
 }
 
 Intern& Intern::operator=(Intern& other) {
-	std::cout << "\033[1;34mIntern copy assignment constructor called.\033[0m" << std::endl;
+	cout << "\033[1;34mIntern copy assignment called.\033[0m" << endl;
 	if (this != &other)
 		return *this;
 	return *this;

@@ -6,17 +6,15 @@ using std::endl;
 //Orthodox
 Bureaucrat::Bureaucrat() {}
 
-Bureaucrat::Bureaucrat(Bureaucrat& other) {
-	std::cout << "\033[1;34mBureaucrat copy constructor called.\033[0m" << std::endl;
-	if (this == &other)
-		return ;
-	*this = other;
+Bureaucrat::Bureaucrat(Bureaucrat& other) : Name(other.getName()), grade(getGrade()) {
+	cout << "\033[1;34mBureaucrat copy constructor called.\033[0m" << endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(Bureaucrat& other) {
-	std::cout << "\033[1;34mBureaucrat copy assignment constructor called.\033[0m" << std::endl;
-	if (this != &other)
+	cout << "\033[1;34mBureaucrat copy assignment called.\033[0m" << endl;
+	if (this != &other) {
 		this->grade = other.getGrade();
+	}
 	return *this;
 }
 
@@ -28,14 +26,14 @@ Bureaucrat::~Bureaucrat() {
 int	Bureaucrat::Increment_grade() {
 	if (--grade < 1)
 		throw GradeTooHighException();
-	std::cout << "Incrementing the grade." << std::endl;
+	cout << "Incrementing the grade." << endl;
 	return grade;
 }
 
 int	Bureaucrat::Decrement_grade() {
 	if (++grade > 150)
 		throw GradeTooLowException();
-	std::cout << "Decrementing the grade." << std::endl;
+	cout << "Decrementing the grade." << endl;
 	return grade;
 }
 

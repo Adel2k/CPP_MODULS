@@ -6,13 +6,9 @@ using std::endl;
 
 //Orthodox
 AForm::AForm() : Name("No name"), sign_grade(0), execute_grade(0), sign(false) {
-	if (sign_grade < 0)
+	if (sign_grade < 0 || execute_grade < 0)
 		throw GradeTooHighException();
-	if (sign_grade > 150)
-		throw GradeTooLowException();
-	if (execute_grade < 0)
-		throw GradeTooHighException();
-	if (execute_grade > 150)
+	if (sign_grade > 150 || execute_grade > 150)
 		throw GradeTooLowException();
 	cout << "\033[1;32mAForm default constructor called.\033[0m" << endl;
 }
@@ -35,15 +31,12 @@ AForm::~AForm() {
 }
 
 //
+
 AForm::AForm(const std::string name, int sign_grade, int execute_grade) : Name(name), sign_grade(sign_grade), execute_grade(execute_grade) {
 	cout << "\033[1;32mAForm constructor with parametrs called.\033[0m" << endl;
-	if (sign_grade < 0)
+	if (sign_grade < 0 || execute_grade < 0)
 		throw GradeTooHighException();
-	if (sign_grade > 150)
-		throw GradeTooLowException();
-	if (execute_grade < 0)
-		throw GradeTooHighException();
-	if (execute_grade > 150)
+	if (sign_grade > 150 || execute_grade > 150)
 		throw GradeTooLowException();
 }
 
@@ -64,9 +57,17 @@ bool	AForm::Get_ifSigned() const {
 }
 
 void	AForm::beSigned(Bureaucrat& b) {
-	if (b.getGrade() <= GetSign_grade()) {
+	if (b.getGrade() <= GetSign_grade())
 		sign = true;
-	}
+	else
+		throw AForm::GradeTooLowException();
+}
+
+void	AForm::execute(Bureaucrat& executor) const {
+	if (sign == false)
+		throw FormNotSignedException();
+	if (executor.getGrade() > execute_grade)
+		throw GradeTooLowException();
 }
 
 //
@@ -86,7 +87,11 @@ const char* AForm::NoFile::what() const throw() {
 const char* AForm::FormNotSignedException::what() const throw() {
 	return "\033[1;33mAForm:The form havent been signed.\033[0m";
 }
-std::ostream&	operator<<(std::ostream& out, AForm& AForm) {
-	out << AForm.GetName();
+
+std::ostream&	operator<<(std::ostream& out, AForm& form) {
+	if (form.Get_ifSigned() == false)
+		out << form.GetName() << ", form sign grade is " << form.GetSign_grade() << ", execute grade is " << form.GetExecute_grade() << ", is not signed."<< endl;
+	else
+		out << form.GetName() << ", form sign grade is " << form.GetSign_grade() << ", execute grade is " << form.GetExecute_grade() << ", is signed." << endl;
 	return out;
 }

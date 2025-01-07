@@ -21,14 +21,10 @@ int main () {
 
 			std::cout << b << std::endl;
 			a.beSigned(b);
-			try {
-				b.signForm(a);
-			}
-			catch(const Bureaucrat::GradeTooLowException& e) {
-				std::cerr << e.what() << '\n';
-			}
+			b.signForm(a);
+			cout << a;
 		}
-		catch(const Bureaucrat::GradeTooLowException& e) {
+		catch(std::exception& e) {
 			std::cerr << e.what() << '\n';
 		}
 	}
@@ -49,12 +45,13 @@ int main () {
 			a.beSigned(b);
 			try {
 				b.signForm(a);
+				cout << a;
 			}
-			catch(const Bureaucrat::GradeTooLowException& e) {
+			catch(std::exception& e) {
 			std::cerr << e.what() << '\n';
 			}
 		}
-		catch(const Bureaucrat::GradeTooLowException& e) {
+		catch(std::exception& e) {
 			std::cerr << e.what() << '\n';
 		}
 	}
@@ -75,12 +72,13 @@ int main () {
 			a.beSigned(b);
 			try {
 				b.signForm(a);
+				cout << a;
 			}
-			catch(const Bureaucrat::GradeTooLowException& e) {
+			catch(std::exception& e) {
 			std::cerr << e.what() << '\n';
 			}
 		}
-		catch(const Bureaucrat::GradeTooLowException& e) {
+		catch(std::exception& e) {
 			std::cerr << e.what() << '\n';
 		}
 	}
@@ -101,12 +99,13 @@ int main () {
 			a.beSigned(b);
 			try {
 				b.signForm(a);
+				cout << a;
 			}
-			catch(const Bureaucrat::GradeTooLowException& e) {
+			catch(std::exception& e) {
 			std::cerr << e.what() << '\n';
 			}
 		}
-		catch(const Bureaucrat::GradeTooLowException& e) {
+		catch(std::exception& e) {
 			std::cerr << e.what() << '\n';
 		}
 	}

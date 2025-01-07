@@ -22,7 +22,7 @@ class ShrubberyCreationForm : public AForm {
 
 		std::string				getTarget() const;
 
-		virtual void			execute(Bureaucrat& executer) const;
+		virtual void			execute(Bureaucrat& executor) const;
 };
 
 #endif

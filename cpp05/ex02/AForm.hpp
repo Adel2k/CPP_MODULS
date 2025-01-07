@@ -21,7 +21,7 @@ class AForm
 		AForm&			operator=(AForm& other);
 
 		void			beSigned(Bureaucrat& b);
-		virtual void	execute(Bureaucrat& executer) const = 0;
+		virtual void	execute(Bureaucrat& executor) const = 0;
 
 		//Getter
 		std::string	GetName() const;
@@ -49,6 +49,6 @@ class AForm
 		};
 };
 
-std::ostream&	operator<<(std::ostream& out, AForm& AForm);
+std::ostream&	operator<<(std::ostream& out, AForm& form);
 
 #endif

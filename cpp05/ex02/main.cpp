@@ -71,13 +71,13 @@ int main() {
 				cout << endl;
 
 			}
-			catch(const Bureaucrat::GradeTooLowException& e) {
+			catch(std::exception &e) {
 				std::cerr << e.what() << '\n';
 			}
 			try {
 				shrubForm.execute(highRanker);
 			}
-			catch(const ShrubberyCreationForm::FormNotSignedException& e) {
+			catch(std::exception &e) {
 				std::cerr << e.what() << '\n';
 			}
 			try {
@@ -85,7 +85,7 @@ int main() {
 				highRanker.executeForm(shrubForm);
 				cout << endl;
 			}
-			catch(const Bureaucrat::GradeTooLowException& e) {
+			catch(std::exception &e) {
 				std::cerr << e.what() << '\n';
 			}
 		}
@@ -113,13 +113,13 @@ int main() {
 				cout << endl;
 
 			}
-			catch(const Bureaucrat::GradeTooLowException& e) {
+			catch(std::exception &e) {
 				std::cerr << e.what() << '\n';
 			}
 			try {
 				shrubForm.execute(highRanker);
 			}
-			catch(const PresidentialPardonForm::FormNotSignedException& e) {
+			catch(std::exception &e) {
 				std::cerr << e.what() << '\n';
 			}
 			try {
@@ -127,7 +127,7 @@ int main() {
 				highRanker.executeForm(shrubForm);
 				cout << endl;
 			}
-			catch(const Bureaucrat::GradeTooLowException& e) {
+			catch(std::exception &e) {
 				std::cerr << e.what() << '\n';
 			}
 		}
@@ -145,7 +145,7 @@ int main() {
 		try {
 			cout << "\033[32mTrying Bureaucrat " << Name << " with " << Grade << " grade to sign Robotomy REquest -------> \033[0m" ;
 			Bureaucrat				highRanker(Name, Grade);
-			RobotomyRequestForm	shrubForm(target);
+			RobotomyRequestForm		shrubForm(target);
 
 			cout << endl << "\033[35mRequired grade for sign the form is 72 and for execute is 45. \033[0m" << endl;
 			shrubForm.beSigned(highRanker);
@@ -155,13 +155,13 @@ int main() {
 				cout << endl;
 
 			}
-			catch(const Bureaucrat::GradeTooLowException& e) {
+			catch(std::exception &e) {
 				std::cerr << e.what() << '\n';
 			}
 			try {
 				shrubForm.execute(highRanker);
 			}
-			catch(const RobotomyRequestForm::FormNotSignedException& e) {
+			catch(std::exception &e) {
 				std::cerr << e.what() << '\n';
 			}
 			try {
@@ -169,7 +169,7 @@ int main() {
 				highRanker.executeForm(shrubForm);
 				cout << endl;
 			}
-			catch(const Bureaucrat::GradeTooLowException& e) {
+			catch(std::exception &e) {
 				std::cerr << e.what() << '\n';
 			}
 		}

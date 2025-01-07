@@ -1,6 +1,11 @@
 #ifndef RobotomyRequestForm_HPP
 # define RobotomyRequestForm_HPP
 
+# include <iostream>
+# include <exception>
+# include <fstream>
+# include <ctime>  
+# include <cstdlib>
 # include "AForm.hpp"
 # include "Bureaucrat.hpp"
 
@@ -16,15 +21,9 @@ class RobotomyRequestForm : public AForm {
 
 		RobotomyRequestForm&		operator=(RobotomyRequestForm& other);
 
-		virtual void			execute(Bureaucrat& executer) const;
+		virtual void			execute(Bureaucrat& executor) const;
 
 		std::string				getTarget() const;
-
-		class RobotomyFailed : public std::exception {
-			public :
-				const char* what() const throw();
-		};
-
 };
 
 #endif

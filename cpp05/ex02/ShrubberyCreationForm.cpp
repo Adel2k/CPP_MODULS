@@ -35,16 +35,14 @@ std::string ShrubberyCreationForm::getTarget() const {
 	return(target);
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat& executer) const {
-	if (!this->Get_ifSigned()) {
-		throw FormNotSignedException();
-	}
-	if (executer.getGrade() <= this->GetExecute_grade()) {
+void ShrubberyCreationForm::execute(Bureaucrat& executor) const {
+	AForm::execute(executor);
+	if (executor.getGrade() <= this->GetExecute_grade()) {
 		std::string s = getTarget() + "_shrubbery";
 		std::ofstream outfile(s.c_str());
 		if (!outfile.is_open()) {
 			std::cerr << "Error:can not open the file" << endl;
-			throw NoFile();
+			throw AForm::NoFile();
 		}
 		outfile << "         *\n";
 		outfile << "        /_\\\n";
@@ -58,6 +56,4 @@ void ShrubberyCreationForm::execute(Bureaucrat& executer) const {
 
 		outfile.close();
 	}
-	else
-		throw GradeTooLowException();
 }

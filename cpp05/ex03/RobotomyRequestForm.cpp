@@ -35,20 +35,13 @@ std::string RobotomyRequestForm::getTarget() const {
 	return(target);
 }
 
-void RobotomyRequestForm::execute(Bureaucrat& executer) const{
-	if (!this->Get_ifSigned()) {
-		throw AForm::FormNotSignedException();
-	}
-
-	if (executer.getGrade() <= this->GetExecute_grade()) {
-		cout << "Bzzzzzzz... Vrrrrrrrr... *Drilling noises*\n";
-		cout << this->getTarget() << " has been robotomized successfully successfully 50% of the time!\n";
-	}
-	else {
-		throw RobotomyRequestForm::RobotomyFailed();
-	}
+void RobotomyRequestForm::execute(Bureaucrat& executor) const{
+	AForm::execute(executor);
+	std::srand(static_cast<unsigned int>(std::time(NULL)));
+	cout << "Bzzzzzzz... Vrrrrrrrr... *Drilling noises*\n";
+	if ((std::rand() % 2) == 0)
+		cout << target << " has been robotomized successfully!" << endl;
+	else
+		cout << "The robotomy of " << target << " failed." << endl;
 }
 
-const char* RobotomyRequestForm::RobotomyFailed::what() const throw() {
-	return "\033[1;33mRobotomyReaquestForm:The robotomy has failed.\033[0m\n";
-}

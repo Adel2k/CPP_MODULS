@@ -26,7 +26,7 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 }
 //
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 72, 45), target(target) {
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5), target(target) {
 	cout << "\033[1;32mPresidentialPardonForm constructor with parameter called for " << target << ".\033[0m" << endl;
 
 }
@@ -35,12 +35,7 @@ std::string PresidentialPardonForm::getTarget() const {
 	return(target);
 }
 
-void PresidentialPardonForm::execute(Bureaucrat& executer) const {
-	if (!this->Get_ifSigned()) {
-		throw AForm::FormNotSignedException();
-	}
-
-	if (executer.getGrade() <= this->GetExecute_grade()) {
-		cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox.\n";
-	}
+void PresidentialPardonForm::execute(Bureaucrat& executor) const {
+	AForm::execute(executor);
+	cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox.\n";
 }

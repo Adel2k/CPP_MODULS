@@ -8,14 +8,14 @@ class Bureaucrat;
 class Form
 {
 	private:
+		Form();
+
 		const std::string	Name;
 		const int			sign_grade;
 		const int			execute_grade;
 		bool				sign;
 
-		
 	public:
-		Form();
 		Form(const std::string name, int sign_grade, int execute_grade);
 		Form(Form& other);
 		~Form();

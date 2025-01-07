@@ -15,13 +15,13 @@ class RobotomyRequestForm : public AForm {
 	
 	public:
 		RobotomyRequestForm();
-		RobotomyRequestForm(RobotomyRequestForm& other);
-		RobotomyRequestForm(std::string target);
+		RobotomyRequestForm(const RobotomyRequestForm& other);
+		RobotomyRequestForm(const std::string& target);
 		~RobotomyRequestForm();
 
-		RobotomyRequestForm&		operator=(RobotomyRequestForm& other);
+		RobotomyRequestForm&		operator=(const RobotomyRequestForm& other);
 
-		virtual void			execute(Bureaucrat& executor) const;
+		virtual void			execute(const Bureaucrat& executor) const;
 
 		std::string				getTarget() const;
 };

@@ -14,15 +14,15 @@ class ShrubberyCreationForm : public AForm {
 	
 	public:
 		ShrubberyCreationForm();
-		ShrubberyCreationForm(ShrubberyCreationForm& other);
-		ShrubberyCreationForm(std::string target);
+		ShrubberyCreationForm(const ShrubberyCreationForm& other);
+		ShrubberyCreationForm(const std::string& target);
 		~ShrubberyCreationForm();
 
-		ShrubberyCreationForm&	operator=(ShrubberyCreationForm& other);
+		ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& other);
 
 		std::string				getTarget() const;
 
-		virtual void			execute(Bureaucrat& executor) const;
+		virtual void			execute(const Bureaucrat& executor) const;
 };
 
 #endif

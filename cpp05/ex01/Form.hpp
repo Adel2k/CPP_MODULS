@@ -16,13 +16,13 @@ class Form
 		bool				sign;
 
 	public:
-		Form(const std::string name, int sign_grade, int execute_grade);
-		Form(Form& other);
+		Form(const std::string& name, int sign_grade, int execute_grade);
+		Form(const Form& other);
 		~Form();
 
-		Form& operator=(Form& other);
+		Form& operator=(const Form& other);
 
-		void	beSigned(Bureaucrat& b);
+		void	beSigned(const Bureaucrat& b);
 
 		class GradeTooHighException : public std::exception {
 			const char*	what() const throw();
@@ -40,6 +40,6 @@ class Form
 
 };
 
-std::ostream&	operator<<(std::ostream& out, Form& form);
+std::ostream&	operator<<(std::ostream& out, const Form& form);
 
 #endif

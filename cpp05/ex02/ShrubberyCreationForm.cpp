@@ -9,12 +9,12 @@ ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 
 	cout << "\033[1;32mShrubberyCreationForm default constructor called.\033[0m" << endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm& other) : AForm(other), target(other.getTarget()) {
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other), target(other.getTarget()) {
 	cout << "\033[1;34mShrubberyCreationForm copy constructor called.\033[0m" << endl;
 	*this = other;
 }
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm& other) {
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other) {
 	cout << "\033[1;34mShrubberyCreationForm copy assignment called.\033[0m" << endl;
 	if (this != &other) {
 		this->target = other.getTarget();
@@ -27,7 +27,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
 }
 //
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), target(target) {
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("ShrubberyCreationForm", 145, 137), target(target) {
 	cout << "\033[1;32mShrubberyCreationForm constructor with parameter called for " << target << ".\033[0m" << endl;
 
 }
@@ -35,7 +35,7 @@ std::string ShrubberyCreationForm::getTarget() const {
 	return(target);
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat& executor) const {
+void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 	AForm::execute(executor);
 	if (executor.getGrade() <= this->GetExecute_grade()) {
 		std::string s = getTarget() + "_shrubbery";

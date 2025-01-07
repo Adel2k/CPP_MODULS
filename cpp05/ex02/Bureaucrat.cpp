@@ -6,11 +6,11 @@ using std::endl;
 //Orthodox
 Bureaucrat::Bureaucrat() {}
 
-Bureaucrat::Bureaucrat(Bureaucrat& other) : Name(other.getName()), grade(getGrade()) {
+Bureaucrat::Bureaucrat(const Bureaucrat& other) : Name(other.getName()), grade(getGrade()) {
 	cout << "\033[1;34mBureaucrat copy constructor called.\033[0m" << endl;
 }
 
-Bureaucrat& Bureaucrat::operator=(Bureaucrat& other) {
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
 	cout << "\033[1;34mBureaucrat copy assignment called.\033[0m" << endl;
 	if (this != &other) {
 		this->grade = other.getGrade();
@@ -37,7 +37,7 @@ if (++grade > 150)
 	return grade;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : Name(name), grade(grade) {
+Bureaucrat::Bureaucrat(const std::string& name, int grade) : Name(name), grade(grade) {
 	cout << "Bureaucrat constructor with parametrs called." << endl;
 	if (grade < 0)
 		throw GradeTooHighException();
@@ -45,7 +45,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : Name(name), grade(grade) {
 		throw GradeTooLowException();
 }
 
-void	Bureaucrat::signForm(AForm& form) {
+void	Bureaucrat::signForm(const AForm& form) {
 	if (form.Get_ifSigned()) {
 		cout << Name << " signed " << form.GetName() << "." << endl;
 	}
@@ -55,7 +55,7 @@ void	Bureaucrat::signForm(AForm& form) {
 	}
 }
 
-void	Bureaucrat::executeForm(AForm& form) {
+void	Bureaucrat::executeForm(const AForm& form) {
 	if (form.GetExecute_grade() >= this->getGrade()) {
 		cout << Name << " executed " << form.GetName() << "." << endl;
 	}

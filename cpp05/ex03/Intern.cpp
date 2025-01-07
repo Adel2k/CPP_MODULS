@@ -11,12 +11,12 @@ Intern::Intern() {
 	cout << "\033[1;32mIntern default constructor called.\033[0m" << endl;
 }
 
-Intern::Intern(Intern& other) {
+Intern::Intern(const Intern& other) {
 	cout << "\033[1;34mIntern copy constructor called.\033[0m" << endl;
 	*this = other;
 }
 
-Intern& Intern::operator=(Intern& other) {
+Intern& Intern::operator=(const Intern& other) {
 	cout << "\033[1;34mIntern copy assignment called.\033[0m" << endl;
 	if (this != &other)
 		return *this;
@@ -28,7 +28,7 @@ Intern::~Intern() {
 }
 //
 
-AForm*	Intern::makeForm(std::string Form, std::string Target) const {
+AForm*	Intern::makeForm(const std::string& Form, const std::string& Target) const {
 	int			i = 0;
 	std::string arr[] = {"presidential pardon", "robotomy request", "shrubbery creation", "NULL"};
 	

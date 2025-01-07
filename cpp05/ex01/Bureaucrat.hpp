@@ -17,8 +17,8 @@ class Bureaucrat
 		int					grade;
 
 	public:
-		Bureaucrat(std::string name, int grade);
-		Bureaucrat(Bureaucrat& other);
+		Bureaucrat(const std::string& name, int grade);
+		Bureaucrat(const Bureaucrat& other);
 		~Bureaucrat();
 
 		int			Increment_grade();
@@ -36,7 +36,7 @@ class Bureaucrat
 				const char*	what() const throw();
 		};
 
-		Bureaucrat&	operator=(Bureaucrat& other);
+		Bureaucrat&	operator=(const Bureaucrat& other);
 
 		//Getter
 		std::string	getName() const;

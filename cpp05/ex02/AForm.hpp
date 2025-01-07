@@ -14,14 +14,14 @@ class AForm
 
 	public:
 		AForm();
-		AForm(const std::string name, int sign_grade, int execute_grade);
-		AForm(AForm& other);
+		AForm(const std::string& name, int sign_grade, int execute_grade);
+		AForm(const AForm& other);
 		virtual ~AForm();
 
-		AForm&			operator=(AForm& other);
+		AForm&			operator=(const AForm& other);
 
-		void			beSigned(Bureaucrat& b);
-		virtual void	execute(Bureaucrat& executor) const = 0;
+		void			beSigned(const Bureaucrat& b);
+		virtual void	execute(const Bureaucrat& executor) const = 0;
 
 		//Getter
 		std::string	GetName() const;
@@ -49,6 +49,6 @@ class AForm
 		};
 };
 
-std::ostream&	operator<<(std::ostream& out, AForm& form);
+std::ostream&	operator<<(std::ostream& out, const  AForm& form);
 
 #endif

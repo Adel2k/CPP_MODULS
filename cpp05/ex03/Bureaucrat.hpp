@@ -17,17 +17,17 @@ class Bureaucrat
 		int					grade;
 
 	public:
-		Bureaucrat(std::string name, int grade);
-		Bureaucrat(Bureaucrat& other);
+		Bureaucrat(const std::string& name, int grade);
+		Bureaucrat(const Bureaucrat& other);
 		~Bureaucrat();
 
 		int			Increment_grade();
 		int			Decrement_grade();
-		void		signForm(AForm& form);
-		void		executeForm(AForm& form);
+		void		signForm(const AForm& form);
+		void		executeForm(const AForm& form);
 
 		//Operator override
-		Bureaucrat&	operator=(Bureaucrat& other);
+		Bureaucrat&	operator=(const Bureaucrat& other);
 
 		//Getter
 		std::string	getName() const;

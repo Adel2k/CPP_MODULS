@@ -8,12 +8,12 @@ RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45
 	cout << "\033[1;32mRobotomyRequestForm default constructor called.\033[0m" << endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm& other) : AForm(other), target(other.getTarget()) {
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other), target(other.getTarget()) {
 	cout << "\033[1;34mRobotomyRequestForm copy constructor called.\033[0m" << endl;
 	*this = other;
 }
 
-RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm& other) {
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other) {
 	cout << "\033[1;34mRobotomyRequestForm copy assignment called.\033[0m" << endl;
 	if (this != &other) {
 		this->target = other.getTarget();
@@ -26,7 +26,7 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 }
 //
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), target(target) {
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("RobotomyRequestForm", 72, 45), target(target) {
 	cout << "\033[1;32mRobotomyRequestForm constructor with parameter called for " << target << ".\033[0m" << endl;
 
 }
@@ -35,7 +35,7 @@ std::string RobotomyRequestForm::getTarget() const {
 	return(target);
 }
 
-void RobotomyRequestForm::execute(Bureaucrat& executor) const{
+void RobotomyRequestForm::execute(const Bureaucrat& executor) const{
 	AForm::execute(executor);
 	std::srand(static_cast<unsigned int>(std::time(NULL)));
 	cout << "Bzzzzzzz... Vrrrrrrrr... *Drilling noises*\n";

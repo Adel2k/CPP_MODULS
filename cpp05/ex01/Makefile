@@ -4,7 +4,6 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98  #-g3 -fsanitize=address
 CPP = c++ $(CPPFLAGS)
 
 SOURCES = main.cpp Bureaucrat.cpp Form.cpp
-# HEADERS = Bureaucrat.hpp
 OBJECS = $(SOURCES:.cpp=.o)
 
 all: $(PROGRAM_NAME)

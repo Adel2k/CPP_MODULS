@@ -45,6 +45,7 @@ int main() {
 			catch(const Bureaucrat::GradeTooLowException& e) {
 				std::cerr << e.what() << '\n';
 			}
+			delete form;
 		}
 		catch (std::exception &e) {
 			std::cerr << "Error: " << e.what() << '\n';

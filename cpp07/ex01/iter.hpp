@@ -4,7 +4,7 @@
 # include <iostream>
 
 template <typename T>
-void    iter(T* address, int len, void(*func)(T&)) {
+void    iter(T* address, int len, void(*func)(const T&)) {
     int i = 0;
 
     if (!address)

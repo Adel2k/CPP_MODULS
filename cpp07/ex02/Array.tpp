@@ -13,43 +13,54 @@ template <typename T>
 Array<T>::~Array() {
 	std::cout << "\033[31mDestructor called\033[0m" << std::endl;
     delete[] array;
+    array = NULL;
 }
 
 template <typename T>
-Array<T>::Array(unsigned int n) {
+Array<T>::Array(unsigned int n) : _size(n) {
 	cout << "\033[32mConstructor with parametrs called.\033[0m" << std::endl;
-    array = new T[n];
-    for (unsigned int i = 0; i < n; i++) {
-        array[i] = 0;
-        cout << array[i] << endl;
+    if (n == 0)
+        array = NULL;
+    else {
+        array = new T[n];
+        for (size_t i = 0; i < n; i++) {
+            array[i] = 0;
+        }
     }
 }
 
 template <typename T>
-Array<T>::Array(const Array& other) {
+Array<T>::Array(const Array& other) : _size(other._size) {
 	cout << "\033[34mCopy constructor called.\033[0m" << endl;
-    unsigned int size = other.size();
-    if (size == 0)
+    if (_size == 0)
         array = NULL;
     else {
-        array = new T[size];
-        for (unsigned int i = 0; i < size; i++) {
+        array = new T[_size];
+        for (size_t i = 0; i < _size; i++) {
             array[i] = other.array[i];
         }
     }
 }
 
 template <typename T>
+size_t Array<T>::size() const {
+    if (!array)
+        return (0);
+    return (_size);
+}
+
+
+template <typename T>
 Array<T>& Array<T>::operator=(const Array& other) {
 	cout << "\033[34mCopy assignment called.\033[0m" << endl;
     if (this != &other) {
-        unsigned int size = other.size();
-        if (size == 0)
+        _size = other._size;
+        delete[] array;
+        if (other._size == 0)
             array = NULL;
         else {
-            delete[] array;
-            array = new T[size];
-            for (unsigned int i = 0; i < size; i++) {
+            array = new T[other._size];
+            for (size_t i = 0; i < other._size; i++) {
                 array[i] = other.array[i];
             }
         }
@@ -58,13 +69,9 @@ Array<T>& Array<T>::operator=(const Array& other) {
 }
 
 template <typename T>
-unsigned int Array<T>::size() const{
-    unsigned int i = 0;
-    if (!array)
-        return (0);
-    while (array[i]) {
-        i++;
+T& Array<T>::operator[](const size_t n) const{
+    if (n >= size()) {
+        throw std::out_of_range("Index is out of range!");
     }
-    return (i);
+    return array[n];
 }
-

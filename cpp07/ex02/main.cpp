@@ -1,13 +1,15 @@
 #include <iostream>
 #include <cstdlib>
-
 #include "Array.hpp"
 
-#define MAX_VAL 25
+using std::endl;
+using std::cout;
+
+#define MAX_VAL 10
 
 int main(void) {
 
-	std::cout << "\033[35m***********************************************\033[0m" << std::endl;
+	cout << "\033[1;34m>>>>>>>>>>>>>>>>>>>TESTING>>>>>>>>>>>>>>>>>>>\033[0m" << endl;
 	Array<int> numbers(MAX_VAL);
 	int* mirror = new int[MAX_VAL];
 	srand(time(NULL));
@@ -15,42 +17,32 @@ int main(void) {
 		const int value = rand();
 		numbers[i] = value;
 		mirror[i] = value;
-		std::cout << "\033[32m***********************************************\033[0m" << std::endl;
-		std::cout << numbers[i] << std::endl;
-		std::cout << mirror[i] << std::endl;
-		std::cout << "\033[32m***********************************************\033[0m" << std::endl;
+		cout << numbers[i] << endl;
+		cout << mirror[i] << endl;
+		cout << "\033[33m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[0m" << endl;
 	}
-	std::cout << "\033[35m***********************************************\033[0m" << std::endl;
-	std::cout << std::endl;
-
 	{
-		std::cout << "\033[35m***********************************************\033[0m" << std::endl;
-		std::cout << std::endl;
 	    Array<int> tmp = numbers;
 	    Array<int> test;
 
 		test = tmp;
 		for (int i = 0; i < MAX_VAL; i++) {
-		std::cout << "\033[32m***********************************************\033[0m" << std::endl;
-		std::cout << tmp[i] << std::endl;
-		std::cout << test[i] << std::endl;
-		std::cout << "\033[32m***********************************************\033[0m" << std::endl;
+		cout << tmp[i] << endl;
+		cout << test[i] << endl;
+		cout << "\033[33m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[0m" << endl;
 		}
 	}
-	std::cout << "\033[35m***********************************************\033[0m" << std::endl;
-	std::cout << std::endl;
+	cout << "\033[35m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[0m" << endl;
+	cout << endl;
 
 	for (int i = 0; i < MAX_VAL; i++)
 	{
 	    if (mirror[i] != numbers[i])
 	    {
-	        std::cerr << "didn't save the same value!!" << std::endl;
+	        std::cerr << "didn't save the same value!!" << endl;
 	        return 1;
 	    }
 	}
-
-	std::cout << "\033[35m***********************************************\033[0m" << std::endl;
-	std::cout << std::endl;
 	try
 	{
 	    numbers[-2] = 0;
@@ -59,8 +51,8 @@ int main(void) {
 	{
 	    std::cerr << e.what() << '\n';
 	}
-	std::cout << "\033[35m***********************************************\033[0m" << std::endl;
-	std::cout << std::endl;
+	cout << "\033[35m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[0m" << endl;
+	cout << endl;
 	try
 	{
 	    numbers[MAX_VAL] = 0;
@@ -69,8 +61,8 @@ int main(void) {
 	{
 	    std::cerr << e.what() << '\n';
 	}
-	std::cout << "\033[35m***********************************************\033[0m" << std::endl;
-	std::cout << std::endl;
+	cout << "\033[35m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[0m" << endl;
+	cout << endl;
 
 	delete [] mirror;
 	return 0;

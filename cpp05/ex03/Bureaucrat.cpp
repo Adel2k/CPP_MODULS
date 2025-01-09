@@ -6,7 +6,7 @@ using std::endl;
 //Orthodox
 Bureaucrat::Bureaucrat() {}
 
-Bureaucrat::Bureaucrat(const Bureaucrat& other) : Name(other.getName()), grade(getGrade()) {
+Bureaucrat::Bureaucrat(const Bureaucrat& other) : Name(other.getName()), grade(other.getGrade()) {
 	cout << "\033[1;34mBureaucrat copy constructor called.\033[0m" << endl;
 }
 

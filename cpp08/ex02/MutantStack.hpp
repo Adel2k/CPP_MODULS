@@ -5,7 +5,6 @@
 # include <stack>
 # include <deque>
 
-
 template <typename T>
 class MutantStack : public std::stack<T>
 {
@@ -15,6 +14,7 @@ class MutantStack : public std::stack<T>
         MutantStack();
         MutantStack(const MutantStack& other);
         ~MutantStack();
+
         typedef std::deque<T> container;
         typedef typename container::iterator iterator;
         typedef typename container::const_iterator const_iterator;
@@ -29,8 +29,6 @@ class MutantStack : public std::stack<T>
         reverse_iterator rend();
         const_reverse_iterator rbegin() const;
         const_reverse_iterator rend() const;
-
-
 
         MutantStack& operator=(const MutantStack& other);
 };

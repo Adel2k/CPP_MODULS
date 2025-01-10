@@ -3,16 +3,16 @@ PROGRAM_NAME = template
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
 CPP = c++ $(CPPFLAGS)
 
-# Only include .cpp files in SOURCES
 SOURCES = main.cpp
 OBJECS = $(SOURCES:.cpp=.o)
+HEADERS = Array.hpp
 
 all: $(PROGRAM_NAME)
 
 $(PROGRAM_NAME): $(OBJECS)
 	$(CPP) $^ -o $(PROGRAM_NAME) -I.
 
-%.o: %.cpp
+%.o: %.cpp $(HEADERS) Makefile
 	$(CPP) -c $< -o $@
 
 clean:

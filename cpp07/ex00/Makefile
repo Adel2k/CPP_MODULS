@@ -5,13 +5,14 @@ CPP = c++ $(CPPFLAGS)
 
 SOURCES = main.cpp 
 OBJECS = $(SOURCES:.cpp=.o)
+HEADERS = templates.hpp
 
 all: $(PROGRAM_NAME)
 
 $(PROGRAM_NAME): $(OBJECS)
 	$(CPP) $^ -o $(PROGRAM_NAME) -I.
 
-%.o: %.cpp Makefile
+%.o: %.cpp $(HEADERS) Makefile
 	$(CPP) -c $< -o $@
 
 clean:

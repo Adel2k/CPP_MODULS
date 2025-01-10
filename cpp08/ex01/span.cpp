@@ -51,7 +51,6 @@ int     Span::shortestSpan() {
 
 int     Span::longestSpan() {
     std::sort(array.begin(), array.end());
-    std::cout << *array.begin() << std::endl;
     int longest = *(array.end() - 1) - *array.begin();
     return (longest);
 }

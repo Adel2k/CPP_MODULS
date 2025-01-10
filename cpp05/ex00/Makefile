@@ -4,7 +4,7 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98  #-g3 -fsanitize=address
 CPP = c++ $(CPPFLAGS)
 
 SOURCES = main.cpp Bureaucrat.cpp
-# HEADERS = Bureaucrat.hpp
+HEADERS = Bureaucrat.hpp
 OBJECS = $(SOURCES:.cpp=.o)
 
 all: $(PROGRAM_NAME)
@@ -12,7 +12,7 @@ all: $(PROGRAM_NAME)
 $(PROGRAM_NAME): $(OBJECS)
 	$(CPP) $^ -o $(PROGRAM_NAME) $(HEADERS) -I.
 
-%.o: %.cpp Makefile
+%.o: %.cpp $(HEADERS) Makefile
 	$(CPP) -c $< -o $@
 
 clean:

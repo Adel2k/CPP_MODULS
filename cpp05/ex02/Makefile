@@ -10,6 +10,13 @@ SOURCES = 	main.cpp \
 			RobotomyRequestForm.cpp \
 			PresidentialPardonForm.cpp \
 
+HEADERS =	Bureaucrat.hpp \
+			AForm.hpp \
+			ShrubberyCreationForm.hpp \
+			PresidentialPardonForm.hpp \
+			RobotomyRequestForm.hpp \
+
+
 OBJECS = $(SOURCES:.cpp=.o)
 
 all: $(PROGRAM_NAME)
@@ -17,7 +24,7 @@ all: $(PROGRAM_NAME)
 $(PROGRAM_NAME): $(OBJECS)
 	$(CPP) $^ -o $(PROGRAM_NAME) $(HEADERS) -I.
 
-%.o: %.cpp Makefile
+%.o: %.cpp $(HEADERS) Makefile
 	$(CPP) -c $< -o $@
 
 clean:

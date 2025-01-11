@@ -1,27 +1,47 @@
 # include "templates.hpp"
 
-using std::endl;
+# include <iostream>
+# include <string>
 using std::cout;
+using std::endl;
+
+#define RESET       "\033[0m"
+#define BOLD        "\033[1m"
+#define RED         "\033[31m"
+#define GREEN       "\033[32m"
+#define YELLOW      "\033[33m"
+#define BLUE        "\033[34m"
+#define MAGENTA     "\033[35m"
+#define CYAN        "\033[36m"
+#define UNDERLINE   "\033[4m"
+
+template <typename T>
+void displayResults(const std::string& label, T a, T b, const std::string& color) {
+    cout << color << "   " << label << RESET << " a = " << a << ", b = " << b << endl;
+}
+
+template <typename T>
+void runTest(const std::string& testName, T a, T b) {
+    cout << BOLD << YELLOW << "=== " << testName << " ===" << RESET << endl;
+
+    cout << BLUE << "Before Swap:" << RESET << endl;
+    displayResults("Initial values:", a, b, MAGENTA);
+
+    ::swap(a, b);
+
+    cout << GREEN << "After Swap:" << RESET << endl;
+    displayResults("Swapped values:", a, b, CYAN);
+
+    cout << UNDERLINE << "Comparisons:" << RESET << endl;
+    cout << "   " << GREEN << "min( a, b )" << RESET << " = " << ::min(a, b) << endl;
+    cout << "   " << RED << "max( a, b )" << RESET << " = " << ::max(a, b) << endl;
+
+    cout << BOLD << "--------------------------------------" << RESET << endl;
+}
 
 int main() {
-    int a = 2;
-    int b = 3;
-
-    cout << "Befor swap a = " << a << " b = " << b << endl;
-    ::swap( a, b );
-    cout << "After swap a = " << a << " b = " << b << endl;
-
-    cout << "a = " << a << ", b = " << b << endl;
-    cout << "min( a, b ) = " << ::min( a, b ) << endl;
-    cout << "max( a, b ) = " << ::max( a, b ) << endl;
-    std::string c = "chaine1";
-    std::string d = "chaine2";
-
-    ::swap(c, d);
-
-    cout << "c = " << c << ", d = " << d << endl;
-    cout << "min( c, d ) = " << ::min( c, d ) << endl;
-    cout << "max( c, d ) = " << ::max( c, d ) << endl;
+    runTest("Integer Test", 2, 3);
+    runTest("String Test", std::string("chaine1"), std::string("chaine2"));
 
     return 0;
 }

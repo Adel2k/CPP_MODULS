@@ -14,10 +14,8 @@ ScalarConverter::ScalarConverter(const ScalarConverter& other) {
 
 }
 
-ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other) {
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& ) {
     cout << "\033[1;34mScalarConverter copy assignment called.\033[0m" << endl;
-    if (this != &other)
-        return *this;
     return *this;
 }
 
@@ -26,20 +24,20 @@ ScalarConverter::~ScalarConverter() {
 }
 //
 
-void ScalarConverter::convertChar(const std::string& lit) {
+void convertChar(const std::string& lit) {
     cout << "char\t->\t" << "'" << static_cast<char>(lit[0]) << "'" << endl;
     cout << "int\t->\t" << static_cast<int>(lit[0]) << endl;
     cout << "float\t->\t" << std::fixed << std::setprecision(1) << static_cast<float>(lit[0]) << "f" << endl;
     cout << "double\t->\t" << std::fixed << std::setprecision(1) << static_cast<double>(lit[0]) << endl;
 }
 
-void ScalarConverter::convertDigit(const std::string& lit) {
+void convertDigit(const std::string& lit) {
 //int and char
     try {
-        int iValue = std::stoi(lit);
+        int iValue = std::atoi(lit.c_str());
         if ((iValue >= 0 && iValue <= 31) || iValue == 127) 
             cout << "char\t->\tNon-printable" << endl;
-        else if (iValue < 0)
+        else if (iValue < 0 || iValue > 128)
             cout << "char\t->\tImpossible" << endl;
         else
             cout << "char\t->\t" << "'" << static_cast<char>(iValue) << "'" << endl;
@@ -55,7 +53,7 @@ void ScalarConverter::convertDigit(const std::string& lit) {
     }
 //float
     try {
-        float fValue = std::stof(lit);
+        float fValue = std::atof(lit.c_str());
         if (std::floor(fValue) == fValue) {
             cout << "float\t->\t" << std::fixed << std::setprecision(1) << fValue << "f" << endl;
         }
@@ -71,7 +69,7 @@ void ScalarConverter::convertDigit(const std::string& lit) {
     }
 //double
     try {
-        double dValue = std::stod(lit);
+        double dValue = std::atof(lit.c_str());
         if (std::floor(dValue) == dValue) {
             cout << "double\t->\t" << std::fixed << std::setprecision(1) << dValue << endl;
         }
@@ -94,4 +92,36 @@ void ScalarConverter::convert(const std::string& lit) {
     else {
         convertDigit(lit);
     }
+}
+
+
+int stringToInt(const std::string& str) {
+    std::stringstream ss(str);
+    int result;
+    if (!str.empty() && str[0] == '.')
+        return 0;
+    else if (!(ss >> result) || !(ss.eof())) {
+        throw std::invalid_argument("Invalid integer: " + str);
+    }
+    return result;
+}
+
+double stringToDouble(const std::string& str) {
+    std::stringstream ss(str);
+    double result;
+    if (!(ss >> result) || !(ss.eof())) {
+        throw std::invalid_argument("Invalid double value: " + str);
+    }
+
+    return result;
+}
+
+float stringToFloat(const std::string& str) {
+    std::stringstream ss(str);
+    float result;
+    if (!(ss >> result) || !(ss.eof())) {
+        throw std::invalid_argument("Invalid float value: " + str);
+    }
+
+    return result;
 }

@@ -3,13 +3,33 @@
 using std::cout;
 using std::endl;
 
-int validation(char *av) {
+int validation(const std::string& av) {
     int i = 0;
 
-    if (std::strlen(av) == 1 && !std::isdigit(av[0]))
+    if (av.length() == 1 && !std::isdigit(av[0]))
         return 0;
     while (av[i])
     {
+        if (av == "-inff" || av == "+inff" || av == "inff" || av == "inf" || av == "-inf" || av == "+inf") {
+            cout << "char\t->\tImpossible" << endl;
+            cout << "int\t->\tImpossible" << endl;
+            if (av[0] == '-') {
+                cout << "float\t->\t-inff" << endl;
+                cout << "double\t->\t-inf" << endl;
+            }
+            else {
+                cout << "float\t->\tinff" << endl;
+                cout << "double\t->\tinf" << endl;
+            }
+            exit(0);
+        }
+        else if (av == "nanf" ||av == "nan") {
+            cout << "char\t->\tImpossible" << endl;
+            cout << "int\t->\tImpossible" << endl;
+            cout << "float\t->\tnanf" << endl;
+            cout << "double\t->\tnan" << endl;
+            exit(0);
+        }
         if (std::isdigit(av[i]) || av[i] == 'f' || av[i] == '.' || av[i] == '+' || av[i] == '-')
             i++;
         else

@@ -24,10 +24,12 @@ class Span
         Span& operator=(const Span& other);
 
         void                addNumber(int value);
-        std::vector<int>    getArray() const;
-        unsigned int        getSize() const;
+        void                addNumbers(std::vector<int> values);
         int                 shortestSpan();
         int                 longestSpan();
+       
+        std::vector<int>    getArray() const;
+        unsigned int        getSize() const;
 };
 
 #endif

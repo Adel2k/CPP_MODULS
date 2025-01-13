@@ -24,7 +24,7 @@ Span::Span(unsigned int n) : size(n) {}
 
 void    Span::addNumber(int value) {
     if (array.size() >= size)
-        throw std::length_error("no more space to add");
+        throw std::length_error("No more space to add");
     array.push_back(value);
 }
 
@@ -53,4 +53,10 @@ int     Span::longestSpan() {
     std::sort(array.begin(), array.end());
     int longest = *(array.end() - 1) - *array.begin();
     return (longest);
+}
+
+void    Span::addNumbers(std::vector<int> values) {
+     if (values.size() == 1)
+        throw std::length_error("Not long enough");
+    array = values;
 }

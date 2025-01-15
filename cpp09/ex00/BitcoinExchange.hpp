@@ -10,9 +10,12 @@
 # include <algorithm>
 # include <cstdlib>
 # include <cctype>
+# include <sstream>
 
 using std::cout;
 using std::endl;
+using std::string;
+using std::map;
 
 class BitcoinExchange
 {
@@ -20,8 +23,8 @@ class BitcoinExchange
         BitcoinExchange();
         BitcoinExchange(const BitcoinExchange&);
 
-        std::map<std::string, std::string> map;
-        std::string    fileName;
+        std::map<std::string, float> map;
+        std::string     fileName;
 
     public:
         BitcoinExchange(const std::string& av);
@@ -30,13 +33,15 @@ class BitcoinExchange
         BitcoinExchange& operator=(const BitcoinExchange&);
 
         void    validation();
-        void    validateValue(const std::string& value);
-        void    validateDate(const std::string& value);
-        void    addToMap(std::string& key, std::string& value, std::map<std::string, std::string>& map);
-        void    checkDate(std::vector<std::string> date);
+        void    findDate();
+        int    validateValue(const std::string& value);
+        int    validateDate(const std::string& value);
+        void    addToMap(std::string& key, std::string& value);
+        int    checkDate(std::vector<std::string> date);
         bool    fileIdentifier(const std::string& fileName, const std::string& format);
         std::string trim(const std::string& str);
         std::vector<std::string> split(const std::string& str, const char delimiter);
+        std::map<std::string, float> getMap() const;
 };
 
 bool isDigit(const char& ch);

@@ -5,9 +5,6 @@ int main(int ac, char **av) {
         try {
             BitcoinExchange ob(av[1]);
         }
-        catch (const std::invalid_argument& e) {
-           cout << e.what() << endl;
-        }
         catch (const std::exception& e) {
            cout << e.what() << endl;
         }

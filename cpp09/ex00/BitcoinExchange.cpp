@@ -22,14 +22,19 @@ std::string BitcoinExchange::trim(const std::string& str) {
     return str.substr(start, end - start + 1);
 }
 
-void    BitcoinExchange::validateValue(const std::string& value) {
+int    BitcoinExchange::validateValue(const std::string& value) {
     for (size_t i = 0; i < value.length(); i++) {
-        if (!isDigit(value[i]))
-            throw std::invalid_argument("The value should be in range of 1 - 1000");
+        if (!isDigit(value[i]) && value[i] != '.') {
+            std::cerr << "The value should be in range of 1 - 1000" << endl;
+            return 0;
+        }
     }
     int V = std::atoi(value.c_str());
-    if (V < 0 || V > 1000)
-        throw std::invalid_argument("The value should be in range of 1 - 1000");
+    if (V < 0 || V > 1000) {
+        std::cerr << "The value should be in range of 1 - 1000" << endl;
+        return 0;
+    }
+    return 1;
 }
 
 std::vector<std::string> BitcoinExchange::split(const std::string& str, const char delimiter) {
@@ -53,41 +58,73 @@ std::vector<std::string> BitcoinExchange::split(const std::string& str, const ch
     return tokens;
 }
 
-void    BitcoinExchange::checkDate(std::vector<std::string> date) {
+int    BitcoinExchange::checkDate(std::vector<std::string> date) {
     if (date.size() > 3)
-        throw std::invalid_argument("Invalid date");
+        std::cerr << "Invalid date" << endl;
     for (int j = 0; j < 3; j++) {
         for (size_t i = 0; i < date[j].length(); i++) {
             if (!isDigit(date[j][i])){
-                throw std::invalid_argument("Invalid date");
+                std::cerr << "Invalid date" << endl;
+                return 0;
             }
         }
     }
+    return 1;
 }
 
-void    BitcoinExchange::validateDate(const std::string& date) {
+int    BitcoinExchange::validateDate(const std::string& date) {
     // std::string date = trim(value);
     std::vector<std::string> dateV = split(date, '-');
-    checkDate(dateV);
+    if (!checkDate(dateV))
+        return 0;
     int year = std::atoi(dateV[0].c_str());
-    if (year < 0 || year > 2100)
-        throw std::invalid_argument("Invalid date for: " + date);
+    if (year < 0 || year > 2100) {
+        std::cerr << "Invalid date for: " + date << endl;
+        return 0;
+    }
     int month = std::atoi(dateV[1].c_str());
-    if (month < 0 || month > 12) 
-        throw std::invalid_argument("Invalid date: " + date);
+    if (month < 0 || month > 12) {
+        std::cerr << "Invalid date: " + date << endl;
+        return 0;
+    }
     int day = std::atoi(dateV[2].c_str());
-    if (day < 0 || day > 31)
-        throw std::invalid_argument("Invalid date: " + date);
+    if (day < 0 || day > 31) {
+        std::cerr << "Invalid date: " + date << endl;
+        return 0;
+    }
+    return 1;
 }
 
-void    BitcoinExchange::addToMap(std::string& key, std::string& value, std::map<std::string, std::string>& map) {
-    map[key] = value;
+void    BitcoinExchange::addToMap(std::string& key, std::string& value) {
+    map[key] = std::atof(value.c_str());
 }
 
 
 bool    BitcoinExchange::fileIdentifier(const std::string& fileName, const std::string& format) {
     return fileName.size() >= format.size() &&
            fileName.compare(fileName.size() - format.size(), format.size(), format) == 0;
+}
+
+void    BitcoinExchange::findDate() {
+    std::ifstream file("data.csv");
+     if (!file.is_open()) {
+        throw std::runtime_error("Error: Unable to open file: " + fileName);
+    }
+    std::string line;
+    while (std::getline(file, line)) {
+        std::size_t commaPos = line.find(',');
+        if (commaPos != std::string::npos) {
+            std::string key = line.substr(0, commaPos);
+            std::string value = line.substr(commaPos + 1);
+            for (std::map<std::string, float>::iterator it = map.begin(); it != map.end(); ++it) {
+                const std::string& mKey = it->first;
+                if (key.find(mKey) != std::string::npos) {
+                    std::cout << "On date '" << key << "' BTC costs-> " << value << " with " << it->second << " | " << std::atof(value.c_str()) * it->second << std::endl;
+                }
+            }
+        }
+    }
+
 }
 
 void    BitcoinExchange::validation() {
@@ -105,17 +142,21 @@ void    BitcoinExchange::validation() {
     while (std::getline(file, line))
     {
         std::vector<std::string> v =  split(line, '|');
-        if (v.size() != 2)
-            throw std::invalid_argument("YYYY-MM-DD | value");
-        try {
-            validateDate(v[0]);
-            validateValue(v[1]);
+        if (v.size() != 2) {
+            std::cerr << "YYYY-MM-DD | value" << endl;
+            continue;
         }
-        catch (std::exception& e) {
-            cout << e.what() << endl;
-        }
-        addToMap(v[0], v[1], map);
+        if (!validateDate(v[0]))
+            continue;
+        if (!validateValue(v[1]))
+            continue;
+        addToMap(v[0], v[1]);
     }
+    findDate();
+}
+
+std::map<std::string, float> BitcoinExchange::getMap() const {
+    return map;
 }
 
 bool isDigit(const char& ch) {

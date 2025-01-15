@@ -1,6 +1,6 @@
 PROGRAM_NAME = btc
 
-CPPFLAGS = -Wall -Wextra -Werror  -g3 -fsanitize=address
+CPPFLAGS = -Wall -Wextra -Werror  -g3  -fsanitize=address
 CPP = c++ $(CPPFLAGS)
 
 SOURCES = main.cpp BitcoinExchange.cpp

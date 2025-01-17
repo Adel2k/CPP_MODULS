@@ -24,7 +24,10 @@ PmgreMe::PmgreMe(const PmgreMe&) {};
 PmgreMe& PmgreMe::operator=(const PmgreMe&) {return *this;};
 PmgreMe::~PmgreMe() {};
 
-void PmgreMe::printTime() {
+void PmgreMe::printTime(double& vec, double& deq) {
+    cout << "Time to process with std::vector : " << std::fixed << std::setprecision(5) << vec << endl;
+    cout << "Time to process with std::deque : " << std::fixed << std::setprecision(5) << deq << endl;
+
 }
 
 void PmgreMe::print(const char& c) {
@@ -32,11 +35,12 @@ void PmgreMe::print(const char& c) {
         cout << "Before: ";
     if (c == 'a')
         cout << "After: ";
-    for (std::deque<int>::iterator it = deq.begin(); it != deq.end(); ++it) {
+    for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
         cout << *it << " ";
     }
     cout << endl;
 }
+
 
 PmgreMe::PmgreMe(int ac, char **av) {
     for (int i = 1; i < ac; i++) {
@@ -48,5 +52,18 @@ PmgreMe::PmgreMe(int ac, char **av) {
         vec.push_back(std::atoi(av[i]));
     }
     print('b');
-    printTime();
+    clock_t start = clock();
+    sort(vec);
+    clock_t end = clock();
+    double  vec_time = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+    start = clock();
+    sort(deq);
+    end = clock();
+    double  deq_time = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+    print('a');
+    if (!isSorted(vec) || !isSorted(deq)) {
+        cout << "It's not sorted corectlly!!!" << endl;
+        return ;
+    }
+    printTime(vec_time, deq_time);
 }

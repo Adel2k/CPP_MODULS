@@ -76,25 +76,42 @@ int    BitcoinExchange::checkDate(std::vector<std::string> date) {
     return 0;
 }
 
-int    BitcoinExchange::validateDate(std::string& date) {
+int BitcoinExchange::validateDate(std::string& date) {
     date = trim(date);
+    int dashCount = 0;
+    for (char ch : date) {
+        if (ch == '-') {
+            dashCount++;
+        }
+    }
+    if (dashCount != 2) {
+        std::cerr << "Invalid date format (too many or too few dashes): " + date << std::endl;
+        return 1;
+    }
+    size_t firstDash = date.find('-');
+    size_t secondDash = date.find('-', firstDash + 1);
 
-    std::vector<std::string> dateV = split(date, '-');
-    if (checkDate(dateV) == 1)
-        return(1);
-    int year = std::atoi(dateV[0].c_str());
+    if (firstDash == std::string::npos || secondDash == std::string::npos || secondDash == date.length() - 1) {
+        std::cerr << "Invalid date format: " + date << std::endl;
+        return 1;
+    }
+    std::string yearStr = date.substr(0, firstDash);
+    std::string monthStr = date.substr(firstDash + 1, secondDash - firstDash - 1);
+    std::string dayStr = date.substr(secondDash + 1);
+
+    int year = std::atoi(yearStr.c_str());
+    int month = std::atoi(monthStr.c_str());
+    int day = std::atoi(dayStr.c_str());
     if (year < 0 || year > 2100) {
-        std::cerr << "Invalid date for: " + date << endl;
+        std::cerr << "Invalid year for: " + date << std::endl;
         return 1;
     }
-    int month = std::atoi(dateV[1].c_str());
-    if (month < 0 || month > 12) {
-        std::cerr << "Invalid date: " + date << endl;
+    if (month < 1 || month > 12) {
+        std::cerr << "Invalid month for: " + date << std::endl;
         return 1;
     }
-    int day = std::atoi(dateV[2].c_str());
-    if (day < 0 || day > 31) {
-        std::cerr << "Invalid date: " + date << endl;
+    if (day < 1 || day > 31) {
+        std::cerr << "Invalid day for: " + date << std::endl;
         return 1;
     }
     return 0;
@@ -144,7 +161,7 @@ void    BitcoinExchange::validation() {
     {
         std::size_t commaPos = line.find('|');
         if (commaPos == std::string::npos) {
-            std::cerr << "YYYY-MM-DD | value" << endl;
+            std::cerr << "Error: usage: [YYYY-MM-DD | value]" << endl;
             continue;
         }
         std::string key = line.substr(0, commaPos);

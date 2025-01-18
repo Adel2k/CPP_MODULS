@@ -31,7 +31,7 @@ void    RPN::validation(const std::string& string) {
     }
     for (size_t i = 0; i < string.length(); i++) {
         if (!ft::isDigit(string[i]) && !ft::isOperator(string[i]) && !std::isspace(string[i])) {
-            throw std::invalid_argument("Error: Wrong argument at index " + i);
+            throw std::invalid_argument("Error: Wrong argument at index " );
         }
         else {
             if (ft::isSpace(string[i]))

@@ -45,7 +45,7 @@ void PmgreMe::print(const char& c) {
 PmgreMe::PmgreMe(int ac, char **av) {
     for (int i = 1; i < ac; i++) {
         if (!ft::isNumber(av[i])) {
-            std::cerr << "Error: just numbers between 0 - 9999999" << endl;
+            std::cerr << "Error: just numbers between 0 - 9999999" << av[i] << endl;
             return ;
         }
         deq.push_back(std::atoi(av[i]));

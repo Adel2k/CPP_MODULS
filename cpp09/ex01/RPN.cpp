@@ -27,13 +27,11 @@ RPN::~RPN() {}
 
 void    RPN::validation(const std::string& string) {
     if (string.empty()) {
-    std::cerr << "Error: Empty input!" << endl;
-    return;
+        throw std::invalid_argument("Error: Empty input!");
     }
     for (size_t i = 0; i < string.length(); i++) {
         if (!ft::isDigit(string[i]) && !ft::isOperator(string[i]) && !std::isspace(string[i])) {
-            std::cerr << "Error: Wrong argument at index " << i << endl;
-            return ;
+            throw std::invalid_argument("Error: Wrong argument at index " + i);
         }
         else {
             if (ft::isSpace(string[i]))
@@ -43,8 +41,7 @@ void    RPN::validation(const std::string& string) {
             else if (ft::isOperator(string[i])) {
                 operatorCount++;
                 if (_stack.size() < 2) {
-                    std::cerr << "Error: Not enaough operands for operation" << endl;
-                    return ;
+                    throw std::invalid_argument("Error: Not enaough operands for operation");
                 }
                 int operand2 = _stack.top();
                 _stack.pop();
@@ -59,21 +56,18 @@ void    RPN::validation(const std::string& string) {
                     _stack.push(operand1 * operand2);
                 if (string[i] == '/') {
                     if (operand1 == 0 || operand2 == 0) {
-                        std::cerr << "Error: the number can not be devide by 0" << endl;
-                        return ;
+                        throw std::invalid_argument("Error: the number can not be devide by 0");
                     }
                     _stack.push(operand1 / operand2);
                 }
             }
             else {
-                std::cerr << "The numbers should be in the range of 0 - 10"  << endl;
-                return ;
+                throw std::invalid_argument("The numbers should be in the range of 0 - 10" );
             }
         }
     }
     if (_stack.size() != 1) {
-        std::cerr << "Error: No result on the stack" << endl;
-        return ;
+        throw std::invalid_argument("Error: No result on the stack");
     }
     cout << _stack.top() << endl;
 }

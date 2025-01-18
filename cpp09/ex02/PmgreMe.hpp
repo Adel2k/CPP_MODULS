@@ -64,12 +64,36 @@ void	insertion_sort(Container &c) {
 }
 
 template <typename Container>
-void insert(Container &left, Container &right) {
-    for (size_t i = 0; i < right.size(); ++i) {
-        typename Container::iterator pos = std::upper_bound(left.begin(), left.end(), right[i]);
-        left.insert(pos, right[i]);
-    }
+void	insert(Container &left, Container &right) {
+	size_t n = 0;
+	size_t power = 0;
+	size_t start = 0;
+	size_t end = 0;
+
+	for (size_t i = 0; i < right.size();)
+	{
+		++power;
+
+		n = pow(2, power) - n;
+
+		start += n;
+
+		end = start - n;
+
+		if (start > right.size())
+			start = right.size();
+
+		for (size_t j = start - 1; j >= end;)
+		{
+			left.insert(std::upper_bound(left.begin(), left.end(), right[j]), right[j]);
+			++i;
+			if (j == 0)
+				break ;
+			--j;
+		}
+	}
 }
+
 
 template <typename Container>
 void sort(Container &c) {

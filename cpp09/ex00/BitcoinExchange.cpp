@@ -10,13 +10,17 @@ BitcoinExchange::BitcoinExchange(const std::string& av) : fileName(av) {
     validation();
 }
 
+#include <string>
+#include <cctype>
+#include <algorithm>
+
+bool is_not_space(unsigned char ch) {
+    return !std::isspace(ch);
+}
+
 std::string trim(const std::string& str) {
-    std::string::const_iterator first_non_space = std::find_if(str.begin(), str.end(), [](unsigned char ch) {
-        return !std::isspace(ch); 
-    });
-    std::string::const_reverse_iterator last_non_space = std::find_if(str.rbegin(), str.rend(), [](unsigned char ch) {
-        return !std::isspace(ch);
-    });
+    std::string::const_iterator first_non_space = std::find_if(str.begin(), str.end(), is_not_space);
+    std::string::const_reverse_iterator last_non_space = std::find_if(str.rbegin(), str.rend(), is_not_space);
     if (first_non_space != str.end()) {
         return std::string(first_non_space, last_non_space.base());
     }
@@ -79,7 +83,8 @@ int    BitcoinExchange::checkDate(std::vector<std::string> date) {
 int BitcoinExchange::validateDate(std::string& date) {
     date = trim(date);
     int dashCount = 0;
-    for (char ch : date) {
+    for (std::string::const_iterator it = date.begin(); it != date.end(); ++it) {
+        char ch = *it;
         if (ch == '-') {
             dashCount++;
         }
@@ -131,7 +136,7 @@ void BitcoinExchange::findDate(const std::string& key, const std::string& value)
     float btcValue = nearest->second;
     float amount = std::atof(value.c_str());
 
-    std::cout << "On date '" << nearestDate << "' BTC costs-> " << value << " with " << btcValue
+    std::cout << "On date '" << nearestDate << "' BTC costs => " << value << " with " << btcValue
               << " | Total: " << amount * btcValue << std::endl;
 }
 

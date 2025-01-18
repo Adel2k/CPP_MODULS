@@ -6,11 +6,13 @@ int main(int ac, char **av) {
             BitcoinExchange ob(av[1]);
         }
         catch (const std::exception& e) {
-           cout << e.what() << endl;
+            cout << e.what() << endl;
+            return 1;
+
         }
     }
     else {
-        cout << "Please enter the file name." << endl;
+        cout << "Error: Usage: ./btc [input.txt]" << endl;
         return 1;
     }
 }

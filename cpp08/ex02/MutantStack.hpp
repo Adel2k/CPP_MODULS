@@ -30,7 +30,7 @@ class MutantStack : public std::stack<T>
         const_reverse_iterator rbegin() const;
         const_reverse_iterator rend() const;
 
-        MutantStack& operator=(const MutantStack& other);
+        MutantStack& operator=(const MutantStack&);
 };
 
 # include "MutantStack.tpp"

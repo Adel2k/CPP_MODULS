@@ -26,7 +26,7 @@ RPN::~RPN() {}
 //
 
 void    RPN::validation(const std::string& string) {
-    if (string.empty()) {
+    if (string.empty() || string.size() < 3) {
         throw std::invalid_argument("Error: Empty input!");
     }
     for (size_t i = 0; i < string.length(); i++) {

@@ -10,13 +10,13 @@ BitcoinExchange::BitcoinExchange(const std::string& av) : fileName(av) {
     validation();
 }
 
-bool is_not_space(unsigned char ch) {
-    return !std::isspace(ch);
-}
-
 std::string trim(const std::string& str) {
-    std::string::const_iterator first_non_space = std::find_if(str.begin(), str.end(), is_not_space);
-    std::string::const_reverse_iterator last_non_space = std::find_if(str.rbegin(), str.rend(), is_not_space);
+    std::string::const_iterator first_non_space = std::find_if(str.begin(), str.end(), [](unsigned char ch) {
+        return !std::isspace(ch); 
+    });
+    std::string::const_reverse_iterator last_non_space = std::find_if(str.rbegin(), str.rend(), [](unsigned char ch) {
+        return !std::isspace(ch);
+    });
     if (first_non_space != str.end()) {
         return std::string(first_non_space, last_non_space.base());
     }
@@ -27,13 +27,13 @@ int    BitcoinExchange::validateValue(std::string& value) {
     value = trim(value);
     for (size_t i = 0; i < value.length(); i++) {
         if (isDigit(value[i]) == false && value[i] != '.') {
-            throw std::invalid_argument("The value should be in range of 1 - 1000");
+            std::cerr << "The value should be in range of 1 - 1000" << endl;
             return 1;
         }
     }
     int V = std::atoi(value.c_str());
     if (V < 0 || V > 1000) {
-        throw std::invalid_argument("The value should be in range of 1 - 1000");
+        std::cerr << "The value should be in range of 1 - 1000" << endl;
         return 1;
     }
     return 0;
@@ -62,13 +62,13 @@ std::vector<std::string> BitcoinExchange::split(const std::string& str, const ch
 
 int    BitcoinExchange::checkDate(std::vector<std::string> date) {
     if (date.size() != 3) {
-        throw std::invalid_argument("Invalid date");
+        std::cerr << "Invalid date" << endl;
         return 1;
     }
     for (int j = 0; j < 3; j++) {
         for (size_t i = 0; i < date[j].length(); i++) {
             if (isDigit(date[j][i]) == false){
-                throw std::invalid_argument("Invalid date");
+                std::cerr << "Invalid date" << endl;
                 return 1;
             }
         }
@@ -79,21 +79,20 @@ int    BitcoinExchange::checkDate(std::vector<std::string> date) {
 int BitcoinExchange::validateDate(std::string& date) {
     date = trim(date);
     int dashCount = 0;
-    for (std::string::const_iterator it = date.begin(); it != date.end(); ++it) {
-        char ch = *it;
+    for (char ch : date) {
         if (ch == '-') {
             dashCount++;
         }
     }
     if (dashCount != 2) {
-        throw std::invalid_argument("Invalid date format (too many or too few dashes): " + date) ;
+        std::cerr << "Invalid date format (too many or too few dashes): " + date << std::endl;
         return 1;
     }
     size_t firstDash = date.find('-');
     size_t secondDash = date.find('-', firstDash + 1);
 
     if (firstDash == std::string::npos || secondDash == std::string::npos || secondDash == date.length() - 1) {
-        throw std::invalid_argument("Invalid date format: " + date);
+        std::cerr << "Invalid date format: " + date << std::endl;
         return 1;
     }
     std::string yearStr = date.substr(0, firstDash);
@@ -104,15 +103,15 @@ int BitcoinExchange::validateDate(std::string& date) {
     int month = std::atoi(monthStr.c_str());
     int day = std::atoi(dayStr.c_str());
     if (year < 0 || year > 2100) {
-        throw std::invalid_argument("Invalid year for: " + date );
+        std::cerr << "Invalid year for: " + date << std::endl;
         return 1;
     }
     if (month < 1 || month > 12) {
-        throw std::invalid_argument("Invalid month for: " + date );
+        std::cerr << "Invalid month for: " + date << std::endl;
         return 1;
     }
     if (day < 1 || day > 31) {
-        throw std::invalid_argument("Invalid day for: " + date );
+        std::cerr << "Invalid day for: " + date << std::endl;
         return 1;
     }
     return 0;
@@ -124,7 +123,7 @@ void BitcoinExchange::findDate(const std::string& key, const std::string& value)
         if (nearest != map.begin()) {
             --nearest;
         } else {
-            throw std::invalid_argument("Error: No valid date found before " + key);
+            std::cerr << "Error: No valid date found before " << key << std::endl;
             return;
         }
     }
@@ -132,7 +131,7 @@ void BitcoinExchange::findDate(const std::string& key, const std::string& value)
     float btcValue = nearest->second;
     float amount = std::atof(value.c_str());
 
-    std::cout << "On date '" << nearestDate << "' BTC costs => " << value << " with " << btcValue
+    std::cout << "On date '" << nearestDate << "' BTC costs-> " << value << " with " << btcValue
               << " | Total: " << amount * btcValue << std::endl;
 }
 
@@ -162,7 +161,7 @@ void    BitcoinExchange::validation() {
     {
         std::size_t commaPos = line.find('|');
         if (commaPos == std::string::npos) {
-            throw std::invalid_argument("Error: usage: [YYYY-MM-DD | value]");
+            std::cerr << "Error: usage: [YYYY-MM-DD | value]" << endl;
             continue;
         }
         std::string key = line.substr(0, commaPos);

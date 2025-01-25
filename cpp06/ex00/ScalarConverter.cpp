@@ -41,7 +41,10 @@ void convertDigit(const std::string& lit) {
             cout << "char\t->\tImpossible" << endl;
         else
             cout << "char\t->\t" << "'" << static_cast<char>(iValue) << "'" << endl;
-        cout << "int\t->\t" << iValue << endl;
+        if (lit.length() > 9)
+            cout << "int\t->\tImpossible" << endl;
+        else
+            cout << "int\t->\t" << iValue << endl;
     }
     catch (const std::invalid_argument& e) {
         cout << "char\t->\tImpossible" << endl;

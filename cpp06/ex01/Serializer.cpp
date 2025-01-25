@@ -14,10 +14,8 @@ Serializer::Serializer(const Serializer& other) {
 
 }
 
-Serializer& Serializer::operator=(const Serializer& other) {
+Serializer& Serializer::operator=(const Serializer& ) {
     cout << "\033[1;34mSerializer copy assignment called.\033[0m" << endl;
-    if (this != &other)
-        return *this;
     return *this;
 }
 

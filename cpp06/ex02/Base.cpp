@@ -35,19 +35,19 @@ void Base::identify(Base* obj) {
 
 void Base::identify(Base& obj) {
     try {
-        dynamic_cast<A&>(obj);
+        (void)dynamic_cast<A&>(obj);
         cout << "Identified as A" << endl;
     }
     catch (std::bad_cast&) {}
 
     try {
-        dynamic_cast<B&>(obj);
+        (void)dynamic_cast<B&>(obj);
         cout << "Identified as B" << endl;
     }
     catch (std::bad_cast&) {}
 
     try {
-        dynamic_cast<C&>(obj);
+        (void)dynamic_cast<C&>(obj);
         cout << "Identified as C" << endl;
     }
     catch (std::bad_cast&) {}
